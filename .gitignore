@@ -1,0 +1,31 @@
+# Roblox Studio project files
+/Volcano Gen2.rbxlx
+/Volcano Gen2 Tests.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+# Mac
+.DS_Store
+
+# Build output + generated files
+/build/
+/coverage/
+/sourcemap.json
+
+# Generated tooling definitions
+/roblox.yml
+/globalTypes.d.luau
+
+# npm
+/package.json
+/package-lock.json
+/node_modules/
+
+# Private preview access map
+/preview-tokens.md
+
+# Claude and Artificial Intelligence
+/CLAUDE.md
+/.claude/
