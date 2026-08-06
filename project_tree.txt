@@ -1,0 +1,172 @@
+=== Directory Tree ===
+
+.
+├── .gitattributes
+├── .githooks
+│   └── pre-commit
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.yml
+│   │   ├── config.yml
+│   │   └── feature_request.yml
+│   ├── PULL_REQUEST_TEMPLATE
+│   │   ├── bug_fix.md
+│   │   └── feature.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── ci.yml
+│       └── release.yml
+├── .gitignore
+├── .luaurc
+├── .lune
+│   └── wax.luau
+├── .volcano
+│   ├── install_dep.sh
+│   └── project_tree.sh
+├── .vscode
+│   ├── extensions.json
+│   ├── settings.json
+│   └── tasks.json
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── SECURITY.md
+├── assets
+│   ├── 100604009889706.png
+│   ├── 108115485663409.png
+│   ├── 111263549366178.png
+│   ├── 125626312718314.png
+│   ├── 125823673784681.png
+│   ├── 129180860773723.png
+│   ├── 80387863064905.png
+│   ├── 83277910885129.png
+│   ├── 88479147175134.png
+│   ├── 88738500661569.png
+│   └── 91452555903853.png
+├── build
+├── build.sh
+├── coverage-baseline.json
+├── default.project.json
+├── example.client.luau
+├── package-lock.json
+├── package.json
+├── project_tree.txt
+├── rokit.toml
+├── scripts
+│   └── run-tests.luau
+├── selene.toml
+├── src
+│   ├── components
+│   │   ├── action.luau
+│   │   ├── button.luau
+│   │   ├── chrome.luau
+│   │   ├── colorpicker.luau
+│   │   ├── descriptor.luau
+│   │   ├── drag.luau
+│   │   ├── dropdown.luau
+│   │   ├── group.luau
+│   │   ├── input.luau
+│   │   ├── keybind.luau
+│   │   ├── notification.luau
+│   │   ├── popup.luau
+│   │   ├── search.luau
+│   │   ├── section.luau
+│   │   ├── slider.luau
+│   │   ├── stat.luau
+│   │   ├── tab.luau
+│   │   ├── tag.luau
+│   │   ├── toast.luau
+│   │   ├── toggle.luau
+│   │   └── window.luau
+│   ├── init.luau
+│   ├── themes
+│   │   ├── amethyst.luau
+│   │   ├── cobalt.luau
+│   │   ├── default.luau
+│   │   ├── ember.luau
+│   │   ├── frost.luau
+│   │   └── rose.luau
+│   ├── types.luau
+│   └── utility
+│       ├── HapticEngine.luau
+│       ├── assetResolver.luau
+│       ├── colors.luau
+│       ├── constants.luau
+│       ├── enums.luau
+│       ├── filesystem.luau
+│       ├── filesystemManager.luau
+│       ├── flagNames.luau
+│       ├── fontManager.luau
+│       ├── functions.luau
+│       ├── image.luau
+│       ├── imageCache.luau
+│       ├── locale.luau
+│       ├── log.luau
+│       ├── moveable.luau
+│       ├── network.luau
+│       ├── odometer.luau
+│       ├── ordering.luau
+│       ├── path.luau
+│       ├── persistence.luau
+│       ├── persistenceConfig.luau
+│       ├── persistencePaths.luau
+│       ├── persistenceSettings.luau
+│       ├── persistenceWrite.luau
+│       ├── runtime.luau
+│       ├── services.luau
+│       ├── textMetrics.luau
+│       ├── variables.luau
+│       └── windowSizing.luau
+├── stylua.toml
+├── test.project.json
+├── tests
+│   ├── components
+│   │   └── windowWorkflow.spec.luau
+│   ├── integration
+│   │   └── volcano.spec.luau
+│   ├── run.server.luau
+│   ├── runner
+│   │   ├── coverageInstrumentation.spec.luau
+│   │   ├── runnerLifecycleA.spec.luau
+│   │   └── runnerLifecycleB.spec.luau
+│   └── utility
+│       ├── assetResolver.spec.luau
+│       ├── colors.spec.luau
+│       ├── dependency.spec.luau
+│       ├── filesystem.spec.luau
+│       ├── filesystemManager.spec.luau
+│       ├── flagNames.spec.luau
+│       ├── fontManager.spec.luau
+│       ├── functions.spec.luau
+│       ├── hapticEngine.spec.luau
+│       ├── image.spec.luau
+│       ├── imageCache.spec.luau
+│       ├── locale.spec.luau
+│       ├── moveable.spec.luau
+│       ├── network.spec.luau
+│       ├── odometer.spec.luau
+│       ├── ordering.spec.luau
+│       ├── path.spec.luau
+│       ├── persistence.spec.luau
+│       ├── persistenceConfig.spec.luau
+│       ├── persistencePaths.spec.luau
+│       ├── persistenceSettings.spec.luau
+│       ├── textMetrics.spec.luau
+│       ├── variables.spec.luau
+│       └── windowSizing.spec.luau
+├── version.txt
+├── volcano.yml
+└── wax.project.json
+
+21 directories, 138 files
+
+=== Lune Installation ===
+
+Lune not found in PATH.
+
+Searching common locations...
+
+=== System Info ===
+Linux codespaces-a3bf8c 6.8.0-1052-azure #58~22.04.1-Ubuntu SMP Thu Mar 26 05:02:21 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux

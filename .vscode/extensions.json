@@ -1,6 +1,13 @@
 {
-    "recommendations": [
-        "mhutchie.git-graph",
-        "imgildev.vscode-json-flow"
-    ]
+  "recommendations": [
+    "JohnnyMorganz.luau-lsp",
+    "tamasfe.even-better-toml",
+    "foxundermoon.shell-format",
+    "usernamehw.errorlens",
+    "mhutchie.git-graph",
+    "file-icons.file-icons",
+    "sumneko.lua",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig"
+  ]
 }
