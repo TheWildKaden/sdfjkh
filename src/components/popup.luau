@@ -23,10 +23,10 @@ local log = require(utility.log)
 local hapticEngine = require(utility.HapticEngine)
 
 -- Timings (Exponential Out, matching the notification/toast feel).
-local enterInfo = TweenInfo.new(0.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- card rise-in
-local fadeLong = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- fill + stroke
-local fadeShort = TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- content + shadow
-local backdropInfo = TweenInfo.new(0.35, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+local enterInfo = TweenInfo.new(0.48, Enum.EasingStyle.Back, Enum.EasingDirection.Out) -- card rise-in
+local fadeLong = TweenInfo.new(0.36, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- fill + stroke
+local fadeShort = TweenInfo.new(0.25, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- content + shadow
+local backdropInfo = TweenInfo.new(0.32, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 
 -- Card metrics.
 local cardWidth = 400

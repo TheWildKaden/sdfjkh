@@ -19,13 +19,13 @@ local constants = require(utility.constants)
 local hapticEngine = require(utility.HapticEngine)
 
 -- Timings/easings copied from Rayfield Gen1 (all Exponential, Out).
-local growInfo = TweenInfo.new(0.6, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
-local fadeLong = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- bg + stroke
-local fadeShort = TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- title/icon/desc/shadow
+local growInfo = TweenInfo.new(0.45, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+local fadeLong = TweenInfo.new(0.38, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- bg + stroke
+local fadeShort = TweenInfo.new(0.28, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- title/icon/desc/shadow
 -- entry: card slides in from the right as the slot opens
-local swipeInInfo = TweenInfo.new(0.6, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+local swipeInInfo = TweenInfo.new(0.55, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
 -- exit "scale": shrink width + collapse height while it fades
-local shrinkInfo = TweenInfo.new(0.9, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+local shrinkInfo = TweenInfo.new(0.65, Enum.EasingStyle.Cubic, Enum.EasingDirection.In)
 
 local offscreenRight = UDim2.new(0.5, 360, 0.5, 0)
 local centred = UDim2.new(0.5, 0, 0.5, 0)

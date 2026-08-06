@@ -29,7 +29,7 @@ local Window = {}
 Window.__index = Window
 
 -- Default entrance-reveal tween (elements override with their own where needed)
-local revealInfo = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+local revealInfo = TweenInfo.new(0.45, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out)
 
 -- The collapsed "pill" main morphs into on Hide, top-anchored the way the old standalone
 -- restore button used to sit.
@@ -1693,9 +1693,9 @@ function Window:_quickRestore()
     local target = self:_clampedPosition(self._restorePosition or UDim2.new(0.5, 0, 0.5, 0))
     self._restorePosition = target
 
-    local growInfo = TweenInfo.new(0.35, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut)
-    local cornerInfo = TweenInfo.new(0.35, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut)
-    local fadeInfo = TweenInfo.new(0.28, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+    local growInfo = TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+    local cornerInfo = TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+    local fadeInfo = TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 
     -- Phase 1: nothing but the pill morphing back into the window frame. The collapsed face
     -- fades off, main grows + un-rounds. No chrome, no content - so you never see the topbar,
@@ -1780,11 +1780,11 @@ function Window:_firstShow()
     variables.tweenService
         :Create(
             self.main,
-            TweenInfo.new(1, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut),
+            TweenInfo.new(0.9, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
             { BackgroundTransparency = 0, Size = self.size }
         )
         :Play()
-    task.wait(0.85) -- let the frame actually read as a window before anything shows on top of it
+    task.wait(0.65) -- let the frame actually read as a window before anything shows on top of it
     variables.tweenService
         :Create(
             self.windowShadow,
