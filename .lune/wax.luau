@@ -4,25 +4,25 @@
 --!optimize 2
 
 --[[
-    Wax - A Fast Runtime Lua 5.1x+/Luau Project Bundler, Using Roblox Models and Module-Require Semantics
-    MIT License | Copyright (c) 2023-2024 Latte Softworks <https://latte.to>
+    Wax - A Fast Runtime-Based Lua 5.1x+/Luau Project Bundler, Using Roblox Models and Module-Require Semantics
+    MIT License | Copyright (c) 2023-2025 Latte Softworks <https://latte.to>
 
-    Wax Version: 0.4.1
+    Wax Version: 0.4.2
 ]]
 
 ------------------------------------------------------------------------------------------------------
 
-local a local aa,ab,ac,ad,ae,af,ag,ah,ai,aj,ak,al,b,c,d,e,f,g,h,i={function()local b,c,d=a(1)local e return(function(...
-)if string.sub(_VERSION,1,4)~='Lune'then print
+local a local aa,ab,ac,ad,ae,af,ag,ah,ai,aj,ak,al,am,an,ao,ap,aq,ar,as,at={function()local b,c,d=a(1)local e return(
+function(...)if string.sub(_VERSION,1,4)~='Lune'then print
 [[!! Wax doesn't appear to be running on Lune (https://lune-org.github.io/docs), which this script requires, exitting..]]
 return end do local f,g,h,i,j,k=0,8,0,string.match(_VERSION,'Lune (%d+).(%d+).(%d+)')i,j,k=tonumber(i),tonumber(j),
 tonumber(k)if not i then print(`! Can't parse Lune's version on the assumed format from "{_VERSION}", continuing anyway..\n`
 )else _G.LuneVersion=`{i}.{j}.{k}`if i<f or(j<g and i<=f)or(k<h and j<=g and i<=f)then print(`! Lune version "{_G.
 LuneVersion}" detected, but Wax currently recommends Lune {f}.{g}.{h} or higher, continuing anyway..\n`)end end end
 local f,g,h,i,j,k,l,m,n=d'@lune/fs',d'@lune/serde',d'@lune/stdio',d'@lune/roblox',d'@lune/process',d
-'lib/libraries/LuneUtils',d'lib/BundleModel',d'lib/data/Version',d'lib/data/DefaultDarkluaConfig'local o,p,q,r,s,t,u=k.
-Log,k.StringUtils,k.CommandUtils,k.Run,k.ParseArgs,`Wax {m}\n`..
-[[A Fast Runtime Lua 5.1x+/Luau Project Bundler, Using Roblox Models and Module-Require Semantics
+'./lib/libraries/LuneUtils',d'./lib/BundleModel',d'./lib/data/Version',d'./lib/data/DefaultDarkluaConfig'local o,p,q,r,s
+,t,u=k.Log,k.StringUtils,k.CommandUtils,k.Run,k.ParseArgs,`Wax {m}\n`..
+[[A Fast Runtime-Based Lua 5.1x+/Luau Project Bundler, Using Roblox Models and Module-Require Semantics
 
 USAGE:
     lune run wax [subcommand] [options]
@@ -55,12 +55,12 @@ SUBCOMMANDS:
             Additionally, with Darklua, if a ".darklua.json/json5" file isn't found in the
             CWD (your dir "position" in your terminal), it'll use the default configuration
             we provide (see `lune/lib/data/DefaultDarkluaConfig.luau`)
-    
+
       * env-name[="WaxRuntime"]
             The name of the "environment" of the bundled script. This is the "name" of
             the root object (like the `game` DataModel in Roblox) and displays in virtual
             runtime errors (e.g. "[WaxRuntime].Script:1: Some error message")
-    
+
       * darklua-config-path[=(".darklua.json", ".darklua.json5")]
             When `minify` is set as true, this path can be used to directly pass your own
             Darklua config file's path, instead of only checking for the default paths
@@ -133,145 +133,155 @@ Info,`No default Darklua config file found in CWD; creating our default config a
 v(Z)}`)end r('darklua',{'process',v(X),v(M),unpack(Y)})F(X)if _ then F(Z)end else E(M,V)end if f.isDir(Q)then H(Q)end if
 W>0 then print()o.Warn(`WARNING: {W} scripts failed to compile ahead-of-time (CHECK FULL BUILD LOG ABOVE FOR MORE DETAILS); these will throw errors at runtime upon being loaded, detailing said compilation errors.`
 )j.exit(1)end else o.Error(`Subcommand "{x}" invalid, see usage for all valid subcommands:\n`)print(t)j.exit(1)end end)(
-)end,[12]=function()local b,c,d=a(12)local e return(function(...)local f=d'@lune/fs'local function g(h:{[string]:any},i:
-string?)for j,k in h do local l,m=if i then`{i}/{j}`else j,type(k)if m=='table'then if not f.isDir(l)then f.writeDir(l)
-end g(k,l)elseif m=='string'and not f.isFile(l)then f.writeFile(l,k)end end end return g end)()end,[9]=function()local b
-,c,d=a(9)local e return(function(...)local f,g,h,i,j,k,l,m,n,o=table,ipairs,string,next,pcall,game,workspace,tostring,
-tonumber,getmetatable local p,q,r,s,t,u,v,w,x,y,z,A=h.format,h.char,h.gsub,h.match,h.rep,h.sub,h.gmatch,f.find,f.concat,
-f.insert,(typeof or type)do local B={'and','break','do','else','elseif','end','false','for','function','if','in','local'
-,'nil','not','or','repeat','return','then','true','until','while','continue'}A=setmetatable({},{__mode='k'})for C,D in i
-,B do A[D]=true end end w=w or function(B,C)for D,E in g(B)do if E==C then return D end end return end local function B(
-C,D,...)local E,F={...},z(C)if not w(E,F)then error(p('LuaEncode: Incorrect type for `%s`: `%s` expected, got `%s`',D,x(
-E,', '),F),0)end return C end local C do local D={['"']='\\"',['\\']='\\\\',['\a']='\\a',['\b']='\\b',['\t']='\\t',['\n'
-]='\\n',['\v']='\\v',['\f']='\\f',['\r']='\\r'}for E=0,255 do local F=q(E)if not D[F]and(E<32 or E>126)then D[F]='\\'..E
-end end function C(E)return'"'..r(E,'[%z\\"\1-\31\127-\255]',D)..'"'end end local function D(E)local F=''for G in v(E,
-'%](=*)%]')do if#G>=#F then F=G..'='end end return'--['..F..'['..E..']'..F..']'end local E do local function F(G)local H
-,I=j(k.FindService,k,G.ClassName)if H and I then return true end return false end function E(G)local H=G if not H then
-return end local I=''while H do local J,K,L=H.Name,H.ClassName,H.Parent if L==k and F(H)then I=':GetService('..C(K)..')'
-..I elseif not A[J]and s(J,'^[A-Za-z_][A-Za-z0-9_]*$')then I='.'..J..I else I='['..C(J)..']'..I end if L==k then I=
-'game'..I return I elseif L==l then I='workspace'..I return I end H=L end return end end local function F(G,H)B(G,
-'inputTable','table')B(H,'options','table','nil')if H then B(H.Prettify,'options.Prettify','boolean','nil')B(H.
-PrettyPrinting,'options.PrettyPrinting','boolean','nil')B(H.IndentCount,'options.IndentCount','number','nil')B(H.
-OutputWarnings,'options.OutputWarnings','boolean','nil')B(H.StackLimit,'options.StackLimit','number','nil')B(H.
-FunctionsReturnRaw,'options.FunctionsReturnRaw','boolean','nil')B(H.UseInstancePaths,'options.UseInstancePaths',
-'boolean','nil')B(H.SerializeMathHuge,'options.SerializeMathHuge','boolean','nil')B(H._StackLevel,'options._StackLevel',
-'number','nil')B(H._VisitedTables,'options._StackLevel','table','nil')end H=H or{}local I=(H.Prettify==nil and H.
-PrettyPrinting==nil and false)or(H.Prettify~=nil and H.Prettify)or(H.PrettyPrinting and H.PrettyPrinting)local J,K,L,M,N
-,O,P,Q=H.IndentCount or(I and 4)or 0,(H.OutputWarnings==nil and true)or H.OutputWarnings,H.StackLimit or 500,(H.
-FunctionsReturnRaw==nil and false)or H.FunctionsReturnRaw,(H.UseInstancePaths==nil and true)or H.UseInstancePaths,(H.
-SerializeMathHuge==nil and true)or H.SerializeMathHuge,H._StackLevel or 1,H._VisitedTables or{[G]=true}if P>=L then
-return'{--[[LuaEncode: Stack level limit of `'..L..'` reached]]}'end local R,S,T,U,V,W=(O and'math.huge')or'1/0',(O and
-'-math.huge')or'-1/0',(I and'\n')or'',(I and', ')or',',(I and' ')or'',t(' ',J)W=(I and t(W,P))or W local X,Y,Z=(#W>0 and
-u(W,1,-J-1))or'',1,{}do local function _(aa,ab)local ac=Z[aa](ab,false)return ac end local function aa(...)local ab={}
-for ac,ad in i,{...}do y(ab,_(z(ad),ad))end return x(ab,U)end local function ab(ac,ad)return
-[[(function(v, p) for pn, pv in next, p do v[pn] = pv end return v end)(]]..x({ac,_('table',ad)},U)..')'end Z.number=
-function(ac,ad)if ad and ac==Y then Y=Y+1 return nil,true end if ac==1/0 then return R elseif ac==-1/0 then return S end
-return p('%.14g',ac)end Z.string=function(ac,ad)if ad and not A[ac]and s(ac,'^[A-Za-z_][A-Za-z0-9_]*$')then return ac,
-true end return C(ac)end Z.table=function(ac,ad)do local ae=Q[ac]if ae then return p(
-'{--[[LuaEncode: Duplicate reference%s]]}',(ac==G and' (of parent)')or'')end Q[ac]=true end local ae=setmetatable({},{
-__index=H})do ae.Prettify=(ad and false)or I ae.IndentCount=(ad and((not I and J)or 1))or J ae._StackLevel=(ad and 1)or
-P+1 ae._VisitedTables=Q end return F(ac,ae)end Z.boolean=function(ac)return ac and'true'or'false'end Z['nil']=function(
-ac)return'nil'end Z['function']=function(ac)if M then return ac()end return
-[=[function() --[[LuaEncode: `options.FunctionsReturnRaw` false; can't serialize functions]] return end]=]end Z.Axes=
-function(ac)local ad,ae={},{['Enum.Axis.X']=ac.X,['Enum.Axis.Y']=ac.Y,['Enum.Axis.Z']=ac.Z}for af,ag in i,ae do if ag
-then y(ad,af)end end return'Axes.new('..x(ad,U)..')'end Z.BrickColor=function(ac)return'BrickColor.new('..(I and _(
-'string',ac.Name))or ac.Number..')'end Z.CFrame=function(ac)return'CFrame.new('..aa(ac:components())..')'end Z.
-CatalogSearchParams=function(ac)return ab('CatalogSearchParams.new()',{SearchKeyword=ac.SearchKeyword,MinPrice=ac.
-MinPrice,MaxPrice=ac.MaxPrice,SortType=ac.SortType,CategoryFilter=ac.CategoryFilter,BundleTypes=ac.BundleTypes,
-AssetTypes=ac.AssetTypes})end Z.Color3=function(ac)return'Color3.new('..aa(ac.R,ac.G,ac.B)end Z.ColorSequence=function(
-ac)return'ColorSequence.new('.._('table',ac.Keypoints)..')'end Z.ColorSequenceKeypoint=function(ac)return
-'ColorSequenceKeypoint.new('..aa(ac.Time,ac.Value)..')'end Z.DateTime=function(ac)return'DateTime.fromUnixTimestamp('..
-ac.UnixTimestamp..')'end Z.DockWidgetPluginGuiInfo=function(ac)local ad=m(ac)return'DockWidgetPluginGuiInfo.new('..aa(
-Enum.InitialDockState[s(ad,'InitialDockState:(%w+)')],s(ad,'InitialEnabled:(%w+)')=='1',s(ad,
-'InitialEnabledShouldOverrideRestore:(%w+)')=='1',n(s(ad,'FloatingXSize:(%w+)')),n(s(ad,'FloatingYSize:(%w+)')),n(s(ad,
-'MinWidth:(%w+)')),n(s(ad,'MinHeight:(%w+)')))..')'end Z.Enum=function(ac)return'Enum.'..m(ac)end Z.EnumItem=function(ac
-)return m(ac)end Z.Enums=function(ac)return'Enum'end Z.Faces=function(ac)local ad,ae={},{['Enum.NormalId.Top']=ac.Top,[
-'Enum.NormalId.Bottom']=ac.Bottom,['Enum.NormalId.Left']=ac.Left,['Enum.NormalId.Right']=ac.Right,['Enum.NormalId.Back']
-=ac.Back,['Enum.NormalId.Front']=ac.Front}for af,ag in i,ae do if ag then y(ad,af)end end return'Faces.new('..x(ad,U)..
-')'end Z.FloatCurveKey=function(ac)return'FloatCurveKey.new('..aa(ac.Time,ac.Value,ac.Interpolation)..')'end Z.Font=
-function(ac)return'Font.new('..aa(ac.Family,ac.Weight,ac.Style)..')'end Z.Instance=function(ac)if N then local ad=E(ac)
-if ad then return ad end end return'nil'..V..D('Instance.new('.._('string',ac.ClassName)..')')end Z.NumberRange=function
-(ac)return'NumberRange.new('..aa(ac.Min,ac.Max)..')'end Z.NumberSequence=function(ac)return'NumberSequence.new('.._(
-'table',ac.Keypoints)..')'end Z.NumberSequenceKeypoint=function(ac)return'NumberSequenceKeypoint.new('..aa(ac.Time,ac.
-Value,ac.Envelope)..')'end Z.OverlapParams=function(ac)return ab('OverlapParams.new()',{FilterDescendantsInstances=ac.
-FilterDescendantsInstances,FilterType=ac.FilterType,MaxParts=ac.MaxParts,CollisionGroup=ac.CollisionGroup,
-RespectCanCollide=ac.RespectCanCollide})end Z.PathWaypoint=function(ac)return'PathWaypoint.new('..aa(ac.Position,ac.
-Action,ac.Label)..')'end Z.PhysicalProperties=function(ac)return'PhysicalProperties.new('..aa(ac.Density,ac.Friction,ac.
-Elasticity,ac.FrictionWeight,ac.ElasticityWeight)..')'end Z.Random=function()return'Random.new()'end Z.Ray=function(ac)
-return'Ray.new('..aa(ac.Origin,ac.Direction)..')'end Z.RaycastParams=function(ac)return ab('RaycastParams.new()',{
-FilterDescendantsInstances=ac.FilterDescendantsInstances,FilterType=ac.FilterType,IgnoreWater=ac.IgnoreWater,
-CollisionGroup=ac.CollisionGroup,RespectCanCollide=ac.RespectCanCollide})end Z.Rect=function(ac)return'Rect.new('..aa(ac
-.Min,ac.Max)..')'end Z.Region3=function(ac)local ad,ae=ac.CFrame,ac.Size return'Region3.new('..aa(ad*CFrame.new(-ae/2),
-ad*CFrame.new(ae/2))..')'end Z.Region3int16=function(ac)return'Region3int16.new('..aa(ac.Min,ac.Max)..')'end Z.TweenInfo
-=function(ac)return'TweenInfo.new('..aa(ac.Time,ac.EasingStyle,ac.EasingDirection,ac.RepeatCount,ac.Reverses,ac.
-DelayTime)..')'end Z.RotationCurveKey=function(ac)return'RotationCurveKey.new('..aa(ac.Time,ac.Value,ac.Interpolation)..
-')'end Z.UDim=function(ac)return'UDim.new('..aa(ac.Scale,ac.Offset)..')'end Z.UDim2=function(ac)return'UDim2.new('..aa(
-ac.X.Scale,ac.X.Offset,ac.Y.Scale,ac.Y.Offset)..')'end Z.Vector2=function(ac)return'Vector2.new('..aa(ac.X,ac.Y)..')'end
-Z.Vector2int16=function(ac)return'Vector2int16.new('..aa(ac.X,ac.Y)..')'end Z.Vector3=function(ac)return'Vector3.new('..
-aa(ac.X,ac.Y,ac.Z)..')'end Z.Vector3int16=function(ac)return'Vector3int16.new('..aa(ac.X,ac.Y,ac.Z)..')'end Z.userdata=
-function(ac)if o(ac)then return'newproxy(true)'else return'newproxy()'end end end local aa=''for ab,ac in i,G do local
-ad,ae=z(ab),z(ac)if Z[ad]and Z[ae]then local af,ag,_,ah,ai=(I and T..W)or'',false,j(Z[ad],ab,true)local aj,ak=j(Z[ae],ac
-,false)if _ and aj and ak then local al=ah and((ai and ah)or p('[%s]',ah))..((I and' = ')or'=')or''af=af..al..ak ag=true
-elseif K then local al=p('LuaEncode: Failed to encode %s of DataType `%s`: %s',(not _ and'key')or(not aj and'value')or
-'key/value',ae,(not _ and C(ah))or(not aj and C(ak))or'(Failed to get error message)')af=af..D(al)end if i(G,ab)then if
-ag then af=af..','end else af=af..T..X end aa=aa..af end end aa='{'..aa..'}'return aa end return F end)()end,[15]=
-function()local aa,ab,ac=a(15)local ad return(function(...)local ae=ac'@lune/fs'local function af(ag:string,ah:{string}?
-):{string}if not string.match(ag,'[/\\]$')then ag..='/'end local ai=ah or{}for aj,ak in ae.readDir(ag)do if ae.isFile(ak
-)then table.insert(ai,ag..ak)else af(ag..ak..'/',ai)end end return ai end return af end)()end,[11]=function()local aa,ab
-,ac=a(11)local ad return(function(...)local ae,af=ac'@lune/process',{}function af.CommandExists(ag:string):boolean if ae
-.os~='windows'then return ae.spawn('type',{ag},{shell=true}).ok end return true end function af.CheckCommands(ag:{string
-})for ah,ai in ag do assert(af.CommandExists(ai),`Required command "{ai}" no found in your PATH environment variable, is it not installed?`
-)end end return af end)()end,[18]=function()local aa,ab,ac=a(18)local ad return(function(...)export type WebhookObject={
-[string]:any}local ae,af,ag,ah,ai=ac'@lune/net',ac'@lune/task',ac'@lune/serde',false,{}local function aj(ak:number?)ak=
-ak or 3 if ah then return end ah=true af.spawn(function()while ah do repeat af.wait()until#ai>=1 local al=ai[1]local b,c
-:WebhookObject=al[1],al[2]local d=ag.encode('json',c)local e=ae.request{url=b,method='POST',headers={['Content-Type']=
-'application/json'},body=d}if not e.ok then print(`[!] Error in webhook request ({e.statusCode}): {e.body}\n[^^ Waiting 5 seconds..]`
-)af.wait(5)continue end print(`[*] Discord Response ({e.statusCode}): {e.body}`)af.wait(ak)table.remove(ai,1)end end)end
-local function ak()ah=false end local function al(b:string,c:WebhookObject)table.insert(ai,{[1]=b,[2]=c})end
-local function b()ai={}end local function c()repeat af.wait()until#ai==0 end return{Start=aj,Stop=ak,Add=al,Clear=b,
-Await=c}end)()end,[3]=function()local aa,ab,ac=a(3)local ad return(function(...)local ae,af,ag=ac'@lune/luau',ac
-'@lune/roblox',ac'libraries/LuneUtils'local ah,ai,aj,ak,al,b=ag.Log,ag.StringUtils,ac'libraries/LuaEncode',ac
-'data/Version',ac'data/Template',{Folder=1,ModuleScript=2,Script=3,LocalScript=4,StringValue=5}local function c(d:string
-|{roblox.Instance},e:string?,f:boolean?,g:number?,h:boolean?):(string,number)local i,j,k,l=e or'WaxRuntime',if f==nil
-then true else f,g or 0,if h==nil then true else h local function m(n,...)if l then n(...)end end local n,o,p,q,r,s,t,u,
-v=j==false,if type(d)=='string'then af.deserializeModel(d)else d,os.clock(),0,{},{},{},{},{}local function w(x)table.
-insert(v,x)local y={}for z,A in x:GetChildren()do y[A]=w(A)end return y end local x=o for y,z in x do u[z]=w(z)end
-local function A(B,C,D:string?)D=D or B.Name local E,F=table.find(v,B),B.ClassName local G=b[F]if not G then ah.Warn(`Skipping instance of ClassName "{
-F}", as it isn't supported in bundling`)return end local H=F=='LocalScript'or F=='Script'local I,J=H or F==
-'ModuleScript',{[1]=E,[2]=G}if I and not(H and B.Disabled)then local K=B.Source m(ah.Info,`Compile-checking {B.ClassName
-} "{D}"..`)local L,M=pcall(ae.compile,K)if L then t[E]=ai.LineCount(K)+1 s[E]=function()return
-'function()local wax,script,require=ImportGlobals('..E..')local ImportGlobals return (function(...)'..K..'\nend)() end'
-end else local N=string.match(tostring(M),'%w* ?:%d*: ?([^\n]*)\n')ah.Warn(`WARNING: {B.ClassName} "{D}" failed to compile: {
-N or'[Failed to parse compiler error]'}`)q+=1 t[E]=1 s[E]=function()return`function()error("[AOT COMPILER ERROR] {ai.
-SerializeStringData(N)}")end`end end end local K={[1]=B.Name}if F=='StringValue'then K.Value=B.Value end if B.Name~=F
-then J[3]=K end if next(C)then local L={}for M,N in C do local O=A(M,N,`{D}.{M.Name}`)if O then table.insert(L,O)end end
-J[4]=L end return J end for B,C in u do local D=A(B,C)if D then table.insert(r,D)end end local D={}if n then local E=k+8
-for F,G in t do D[F]=E E+=G end end local E=os.clock()m(ah.Info,`Finished bundling model data in {string.format('%.4f',E
--p)} (seconds)`)local F=if j==false then true else false local G,H,I=aj(r,{Prettify=F,StackLimit=math.huge}),aj(s,{
-Prettify=F,FunctionsReturnRaw=true}),if not n then'nil'else aj(D,{Prettify=F})local J=ai.Replace(al,{Version=ai.
-SerializeStringData(ak),EnvName=ai.SerializeStringData(i),ObjectTree=G,ClosureBindings=H,LineOffsets=I})if#x==1 and x[1]
-.ClassName=='ModuleScript'then J..=
+)end,[3]=function()local b,c,d=a(3)local e return(function(...)local f,g,h=d'@lune/luau',d'@lune/roblox',d
+'./libraries/LuneUtils'local i,j,k,l,m,n,o=h.Log,h.StringUtils,d'./libraries/LuaEncode',d'./data/Version',d
+'./data/Template',8,{Folder=1,ModuleScript=2,Script=3,LocalScript=4,StringValue=5}local function p(q:string|{g.Instance}
+,r:string?,s:boolean?,t:number?,u:boolean?):(string,number)local v,w,x,y=r or'WaxRuntime',if s==nil then true else s,t
+or 0,if u==nil then true else u local function z(A,...)if y then A(...)end end local A,B,C,D,E,F,G,H,I=w==false,if type(
+q)=='string'then g.deserializeModel(q)else q,os.clock(),0,{},{},{},{},{}local function J(K)table.insert(I,K)local L={}
+for M,N in K:GetChildren()do L[N]=J(N)end return L end local K=B for L,M in K do H[M]=J(M)end local function L(M,N,O:
+string?)O=O or M.Name local P,Q=table.find(I,M),M.ClassName local R=o[Q]if not R then i.Warn(`Skipping instance of ClassName "{
+Q}", as it isn't supported in bundling`)return end local S=Q=='LocalScript'or Q=='Script'local T,U=S or Q==
+'ModuleScript',{[1]=P,[2]=R}if T and not(S and M.Disabled)then local V=M.Source z(i.Info,`Compile-checking {M.ClassName} "{
+O}"..`)local W,X=pcall(f.compile,V)if W then G[P]=j.LineCount(V)+1 F[P]=function()return
+'function()local wax,script,require=ImportGlobals('..P..')local ImportGlobals return (function(...)'..V..'\nend)() end'
+end else local Y=string.match(tostring(X),'%w* ?:%d*: ?([^\n]*)\n')i.Warn(`WARNING: {M.ClassName} "{O}" failed to compile: {
+Y or'[Failed to parse compiler error]'}`)D+=1 G[P]=1 F[P]=function()return`function()error("[AOT COMPILER ERROR] {j.
+SerializeStringData(Y)}")end`end end end local V={[1]=M.Name}if Q=='StringValue'then V.Value=M.Value end if M.Name~=Q
+then U[3]=V end if next(N)then local W={}for X,Y in N do local Z=L(X,Y,`{O}.{X.Name}`)if Z then table.insert(W,Z)end end
+U[4]=W end return U end for M,N in H do local O=L(M,N)if O then table.insert(E,O)end end local M={}if A then local N=x+n
+for O,P in G do M[O]=N N+=P end end local N=os.clock()z(i.Info,`Finished bundling model data in {string.format('%.4f',N-
+C)} (seconds)`)local O=if w==false then true else false local P,Q,R=k(E,{Prettify=O,StackLimit=math.huge}),k(F,{Prettify
+=O,FunctionsReturnRaw=true}),if not A then'nil'else k(M,{Prettify=O})local S=j.Replace(m,{Version=j.SerializeStringData(
+l),EnvName=j.SerializeStringData(v),ObjectTree=P,ClosureBindings=Q,LineOffsets=R})if#K==1 and K[1].ClassName==
+'ModuleScript'then S..=
 [[
 
 -- AoT adjustment: Load init module (MainModule behavior)
 return LoadScript(RealObjectRoot:GetChildren()[1])]]else
-for K,L in next,x do if L.ClassName=='ModuleScript'and L.Name=='MainModule'then J..=
+for T,U in next,K do if U.ClassName=='ModuleScript'and U.Name=='MainModule'then S..=
 [[
 
 -- AoT adjustment: Load init module (MainModule behavior)
 return LoadScript(RealObjectRoot.MainModule)]]break end
-end end return J,q end return c end)()end,[7]=function()local aa,ab,ac=a(7)local ad return(function(...)return'0.4.1'end
-)()end,[5]=function()local aa,ab,ac=a(5)local ad return(function(...)local ae,af=ac'@lune/serde',{generator={name=
-'dense',column_span=120},rules={'convert_index_to_field','compute_expression','group_local_assignment',
+end end return S,D end return p end)()end,[9]=function()local b,c,d=a(9)local e return(function(...)local f,g,h,i,j,k,l,
+m,n=table,string,next,pcall,game,workspace,tostring,tonumber,getmetatable local o,p,q,r,s,t,u,v,w=g.format,g.char,g.gsub
+,g.match,g.rep,g.sub,g.gmatch,f.concat,typeof or type local function x(y)local z={}for A,B in h,y do z[B]=true end
+return z end local y,z,A=x{'and','break','do','else','elseif','end','false','for','function','if','in','local','nil',
+'not','or','repeat','return','then','true','until','while','continue'},x{'number','string','boolean','Enum','EnumItem',
+'Enums'},'^[A-Za-z_][A-Za-z0-9_]*$'local function B(C,D,...)local E={...}local F,G=x(E),w(C)if not F[G]then error(o(
+'LuaEncode: Incorrect type for `%s`: `%s` expected, got `%s`',D,v(E,', '),G),0)end return C end local C do local D={['"'
+]='\\"',['\\']='\\\\',['\a']='\\a',['\b']='\\b',['\t']='\\t',['\n']='\\n',['\v']='\\v',['\f']='\\f',['\r']='\\r'}for E=0
+,255 do local F=p(E)if not D[F]and(E<32 or E>126)then D[F]=o('\\x%02X',E)end end function C(E)return v{'"',q(E,
+'[%z\\"\1-\31\127-\255]',D),'"'}end end local function D(E)local F=-1 for G in u(E,'%](=*)%]')do if#G>F then F=#G end
+end local G=s('=',F+1)return'--['..G..'['..E..']'..G..']'end local E do local function F(G)local H,I=i(j.FindService,j,G
+.ClassName)if H and I then return true end return false end function E(G,H)local I=G if not I then return end local J=''
+while I do local K,L,M=I.Name,I.ClassName,I.Parent if M==j and F(I)then J=':GetService('..C(L)..')'..J elseif H then J=
+':FindFirstChild('..C(K)..')'..J elseif not y[K]and r(K,A)then J='.'..K..J else J='['..C(K)..']'..J end if M==j then J=
+'game'..J return J elseif M==k then J='workspace'..J return J end I=M end return end end local function F(G,H)H=H or{}B(
+G,'inputTable','table')B(H,'options','table')B(H.Prettify,'options.Prettify','boolean','nil')B(H.PrettyPrinting,
+'options.PrettyPrinting','boolean','nil')B(H.IndentCount,'options.IndentCount','number','nil')B(H.InsertCycles,
+'options.InsertCycles','boolean','nil')B(H.OutputWarnings,'options.OutputWarnings','boolean','nil')B(H.
+FunctionsReturnRaw,'options.FunctionsReturnRaw','boolean','nil')B(H.UseInstancePaths,'options.UseInstancePaths',
+'boolean','nil')B(H.UseFindFirstChild,'options.UseFindFirstChild','boolean','nil')B(H.SerializeMathHuge,
+'options.SerializeMathHuge','boolean','nil')B(H._StackLevel,'options._StackLevel','number','nil')B(H._VisitedTables,
+'options._VisitedTables','table','nil')B(H._SharedTableLarpAsRegTable,'options._SharedTableLarpAsRegTable','boolean',
+'nil')local I=(H.Prettify==nil and H.PrettyPrinting==nil and false)or(H.Prettify~=nil and H.Prettify)or(H.PrettyPrinting
+and H.PrettyPrinting)local J,K,L,M,N,O,P,Q,R,S=H.IndentCount or(I and 4)or 0,(H.InsertCycles==nil and false)or H.
+InsertCycles,(H.OutputWarnings==nil and true)or H.OutputWarnings,(H.FunctionsReturnRaw==nil and false)or H.
+FunctionsReturnRaw,(H.UseInstancePaths==nil and true)or H.UseInstancePaths,(H.UseFindFirstChild==nil and true)or H.
+UseFindFirstChild,(H.SerializeMathHuge==nil and true)or H.SerializeMathHuge,H._StackLevel or 1,H._VisitedTables or{},H.
+_SharedTableLarpAsRegTable or false local T,U,V,W,X,Y,Z,_,aa,ab,ac,ad,ae=(P and'math.huge')or'1/0',(P and'-math.huge')or
+'-1/0',(I and'\n')or'',(I and'\n')or' ',(I and', ')or',',(I and' ')or'',(I and' = ')or'=',Q,s(' ',J),1,{}do
+local function af(ag,ah,...)local ai=ac[ag](ah,false,...)return ai end local function ag(...)local ah={}for ai,aj in h,{
+...}do ah[#ah+1]=af(w(aj),aj)end return v(ah,X)end local function ah(ai,aj)return
+[[(function(p, t) for n, v in next, t do p[n] = v end return p end)(]]..v({ai,af('table',aj)},X)..')'end ac.number=
+function(ai,aj)if aj and ai==ab then ab=ab+1 return nil,true end if ai==1/0 then return T elseif ai==-1/0 then return U
+end return o('%.14g',ai)end ac.string=function(ai,aj)if aj and not y[ai]and r(ai,A)then return ai,true end return C(ai)
+end ac.table=function(ai,aj,ak)if R[ai]and L then return'{--[[LuaEncode: Duplicate reference]]}'end local al=
+setmetatable({},{__index=H})do al.Prettify=(aj and false)or I al.IndentCount=(aj and((not I and J)or 1))or J al.
+_StackLevel=(aj and 1)or _+1 al._VisitedTables=R al._SharedTableLarpAsRegTable=(not aj and ak)end return F(ai,al)end ac.
+boolean=function(ai)return ai and'true'or'false'end ac['nil']=function(ai)return'nil'end ac['function']=function(ai)if M
+then return ai()end return o('function()%send',(L and
+[=[ --[[LuaEncode: `options.FunctionsReturnRaw` false; can't serialize functions]] ]=])or'')end ac.Axes=function(ai)
+local aj,ak={},{['Enum.Axis.X']=ai.X,['Enum.Axis.Y']=ai.Y,['Enum.Axis.Z']=ai.Z}for al,am in h,ak do if am then aj[#aj+1]
+=al end end return'Axes.new('..v(aj,X)..')'end ac.BrickColor=function(ai)return'BrickColor.new('..((I and af('string',ai
+.Name))or ai.Number)..')'end ac.CFrame=function(ai)return'CFrame.new('..ag(ai:components())..')'end ac.
+CatalogSearchParams=function(ai)return ah('CatalogSearchParams.new()',{SearchKeyword=ai.SearchKeyword,MinPrice=ai.
+MinPrice,MaxPrice=ai.MaxPrice,SortType=ai.SortType,CategoryFilter=ai.CategoryFilter,BundleTypes=ai.BundleTypes,
+AssetTypes=ai.AssetTypes})end ac.Color3=function(ai)return'Color3.new('..ag(ai.R,ai.G,ai.B)..')'end ac.ColorSequence=
+function(ai)return'ColorSequence.new('..af('table',ai.Keypoints)..')'end ac.ColorSequenceKeypoint=function(ai)return
+'ColorSequenceKeypoint.new('..ag(ai.Time,ai.Value)..')'end ac.DateTime=function(ai)return'DateTime.fromUnixTimestamp('..
+ai.UnixTimestamp..')'end ac.DockWidgetPluginGuiInfo=function(ai)local aj=l(ai)return'DockWidgetPluginGuiInfo.new('..ag(
+Enum.InitialDockState[r(aj,'InitialDockState:(%w+)')],r(aj,'InitialEnabled:(%w+)')=='1',r(aj,
+'InitialEnabledShouldOverrideRestore:(%w+)')=='1',m(r(aj,'FloatingXSize:(%w+)')),m(r(aj,'FloatingYSize:(%w+)')),m(r(aj,
+'MinWidth:(%w+)')),m(r(aj,'MinHeight:(%w+)')))..')'end ac.Enum=function(ai)local aj=l(ai)if r(aj,A)then return'Enum.'..
+aj end return'Enum['..C(aj)..']'end ac.EnumItem=function(ai)local aj,ak=af('Enum',ai.EnumType),ai.Name if r(ak,A)then
+return aj..'.'..ai.Name end return aj..'['..C(ak)..']'end ac.Enums=function(ai)return'Enum'end ac.Faces=function(ai)
+local aj,ak={},{['Enum.NormalId.Top']=ai.Top,['Enum.NormalId.Bottom']=ai.Bottom,['Enum.NormalId.Left']=ai.Left,[
+'Enum.NormalId.Right']=ai.Right,['Enum.NormalId.Back']=ai.Back,['Enum.NormalId.Front']=ai.Front}for al,am in h,ak do if
+am then aj[#aj+1]=al end end return'Faces.new('..v(aj,X)..')'end ac.FloatCurveKey=function(ai)return'FloatCurveKey.new('
+..ag(ai.Time,ai.Value,ai.Interpolation)..')'end ac.Font=function(ai)return'Font.new('..ag(ai.Family,ai.Weight,ai.Style)
+..')'end ac.Instance=function(ai)if N then local aj=E(ai,O)if aj then return aj end end return'nil'..Y..D(
+'Instance.new('..af('string',ai.ClassName)..')'..Y..'{'..'Name:'..Y..C(ai.Name)..'}')end ac.NumberRange=function(ai)
+return'NumberRange.new('..ag(ai.Min,ai.Max)..')'end ac.NumberSequence=function(ai)return'NumberSequence.new('..af(
+'table',ai.Keypoints)..')'end ac.NumberSequenceKeypoint=function(ai)return'NumberSequenceKeypoint.new('..ag(ai.Time,ai.
+Value,ai.Envelope)..')'end ac.OverlapParams=function(ai)return ah('OverlapParams.new()',{FilterDescendantsInstances=ai.
+FilterDescendantsInstances,FilterType=ai.FilterType,MaxParts=ai.MaxParts,CollisionGroup=ai.CollisionGroup,
+RespectCanCollide=ai.RespectCanCollide})end ac.Path2DControlPoint=function(ai)return'Path2DControlPoint.new('..ag(ai.
+Position,ai.LeftTangent,ai.RightTangent)..')'end ac.PathWaypoint=function(ai)return'PathWaypoint.new('..ag(ai.Position,
+ai.Action,ai.Label)..')'end ac.PhysicalProperties=function(ai)return'PhysicalProperties.new('..ag(ai.Density,ai.Friction
+,ai.Elasticity,ai.FrictionWeight,ai.ElasticityWeight)..')'end ac.Random=function()return'Random.new()'end ac.Ray=
+function(ai)return'Ray.new('..ag(ai.Origin,ai.Direction)..')'end ac.RaycastParams=function(ai)return ah(
+'RaycastParams.new()',{FilterDescendantsInstances=ai.FilterDescendantsInstances,FilterType=ai.FilterType,IgnoreWater=ai.
+IgnoreWater,CollisionGroup=ai.CollisionGroup,RespectCanCollide=ai.RespectCanCollide})end ac.Rect=function(ai)return
+'Rect.new('..ag(ai.Min,ai.Max)..')'end ac.Region3=function(ai)local aj,ak=ai.CFrame.Position,0.5*ai.Size return
+'Region3.new('..ag(aj-ak,aj+ak)..')'end ac.Region3int16=function(ai)return'Region3int16.new('..ag(ai.Min,ai.Max)..')'end
+ac.TweenInfo=function(ai)return'TweenInfo.new('..ag(ai.Time,ai.EasingStyle,ai.EasingDirection,ai.RepeatCount,ai.Reverses
+,ai.DelayTime)..')'end ac.RotationCurveKey=function(ai)return'RotationCurveKey.new('..ag(ai.Time,ai.Value,ai.
+Interpolation)..')'end ac.UDim=function(ai)return'UDim.new('..ag(ai.Scale,ai.Offset)..')'end ac.UDim2=function(ai)return
+'UDim2.new('..ag(ai.X.Scale,ai.X.Offset,ai.Y.Scale,ai.Y.Offset)..')'end ac.Vector2=function(ai)return'Vector2.new('..ag(
+ai.X,ai.Y)..')'end ac.Vector2int16=function(ai)return'Vector2int16.new('..ag(ai.X,ai.Y)..')'end ac.Vector3=function(ai)
+return'Vector3.new('..ag(ai.X,ai.Y,ai.Z)..')'end ac.Vector3int16=function(ai)return'Vector3int16.new('..ag(ai.X,ai.Y,ai.
+Z)..')'end ac.buffer=function(ai)return'buffer.fromstring('..C(buffer.tostring(ai))..')'end ac.SharedTable=function(ai,
+aj)local ak={}for al,am in SharedTable.clone(ai,not S)do ak[al]=am end local al=ac.table(ak,aj,true)if S then return al
+end return v{'SharedTable.new(',al,')'}end ac.userdata=function(ai)if n(ai)~=nil then return'newproxy(true)'else return
+'newproxy()'end end end local af,ag,ah,ai,aj={},G,true,{}local ak,al={[ag]=''},{}while ag do _=Q+#ai ad=(I and s(aa,_))
+or aa ae=(#ad>0 and t(ad,1,-J-1))or''if ah then af[#af+1]='{'elseif h(ag,aj)==nil then af[#af+1]=V..ae else af[#af+1]=
+','end R[ag]=true local am=false for an,ao in h,ag,aj do local ap,aq=w(an),w(ao)local ar,as,at=aq=='table',ac[ap],ac[aq]
+af[#af+1]=V..ad if as and at then local au,av,aw,ax=false,i(as,an,true)local ay,az if not ar then ay,az=i(at,ao,false)
+end if av and(ar or(ay and az))then if aw then if ax then af[#af+1]=aw else af[#af+1]=v{'[',aw,']'}end af[#af+1]=Z end
+if ar then local aA if K and z[ap]and ak[ag]then if ap=='string'and not y[an]and r(an,A)then aA='.'..an else local aB=ac
+[ap](an)aA=v{'[',aB,']'}end end if not R[ao]then if aA then ak[ao]=ak[ag]..aA end ai[#ai+1]={ag,an,ab}ag=ao aj=nil ab=1
+ah=true am=true break else az=o('{%s}',(L and'--[[LuaEncode: Duplicate reference]]')or'')if aA then al[aA]=ak[ao]end end
+end af[#af+1]=az au=true elseif L then local aA=o('LuaEncode: Failed to serialize %s of data type %s: %s',(not av and
+'key')or(not ay and'value')or'key/value',aq,(not av and C(aw))or(not ay and C(az))or'(Failed to get error message)')af[#
+af+1]=D(aA)end if h(ag,an)==nil then af[#af+1]=V..ae elseif au then af[#af+1]=','end else local au,av=(ap=='userdata'and
+'userdata')or l(an),(aq=='userdata'and'userdata')or l(ao)af[#af+1]=D(Y..ap..'('..C(au)..')'..':'..Y..aq..'('..C(av)..')'
+..Y)if h(ag,an)==nil then af[#af+1]=V..ae end end end if not am then if not I and J>0 then af[#af+1]=ad end af[#af+1]=
+'}'if#ai>0 then local an=ai[#ai]ai[#ai]=nil ag,aj,ab=an[1],an[2],an[3]ah=false else break end end end if K then local am
+={}for an,ao in h,al do am[#am+1]=ad..'t'..an..Z..'t'..ao..W end if#am>0 then return v{'(function(t)',V,v(am),V,ad,
+'return t',W,'end)(',v(af),')'}end end return v(af)end return F end)()end,[15]=function()local aa,ab,ac=a(15)local ad
+return(function(...)local ae=ac'@lune/fs'local function af(ag:string,ah:{string}?):{string}if not string.match(ag,
+'[/\\]$')then ag..='/'end local ai=ah or{}for aj,ak in ae.readDir(ag)do if ae.isFile(ak)then table.insert(ai,ag..ak)else
+af(ag..ak..'/',ai)end end return ai end return af end)()end,[11]=function()local aa,ab,ac=a(11)local ad return(function(
+...)local ae,af=ac'@lune/process',{}function af.CommandExists(ag:string):boolean if ae.os~='windows'then return ae.exec(
+'type',{ag},{shell=true}).ok end return true end function af.CheckCommands(ag:{string})for ah,ai in ag do assert(af.
+CommandExists(ai),`Required command "{ai}" no found in your PATH environment variable, is it not installed?`)end end
+return af end)()end,[18]=function()local aa,ab,ac=a(18)local ad return(function(...)export type WebhookObject={[string]:
+any}local ae,af,ag,ah,ai=ac'@lune/net',ac'@lune/task',ac'@lune/serde',false,{}local function aj(ak:number?)ak=ak or 3 if
+ah then return end ah=true af.spawn(function()while ah do repeat af.wait()until#ai>=1 local al=ai[1]local am,an:
+WebhookObject=al[1],al[2]local ao=ag.encode('json',an)local ap=ae.request{url=am,method='POST',headers={['Content-Type']
+='application/json'},body=ao}if not ap.ok then print(`[!] Error in webhook request ({ap.statusCode}): {ap.body}\n[^^ Waiting 5 seconds..]`
+)af.wait(5)continue end print(`[*] Discord Response ({ap.statusCode}): {ap.body}`)af.wait(ak)table.remove(ai,1)end end)
+end local function ak()ah=false end local function al(am:string,an:WebhookObject)table.insert(ai,{[1]=am,[2]=an})end
+local function am()ai={}end local function an()repeat af.wait()until#ai==0 end return{Start=aj,Stop=ak,Add=al,Clear=am,
+Await=an}end)()end,[5]=function()local aa,ab,ac=a(5)local ad return(function(...)local ae,af=ac'@lune/serde',{generator=
+{name='dense',column_span=120},rules={'convert_index_to_field','compute_expression','group_local_assignment',
 'filter_after_early_return','remove_comments','remove_empty_do','remove_function_call_parens','remove_nil_declaration',
 'remove_method_definition','remove_spaces','remove_unused_if_branch','remove_unused_while',{rule='rename_variables',
-include_functions=true}}}return ae.encode('json',af,false)end)()end,[13]=function()local aa,ab,ac=a(13)local ad return(
-function(...)local ae=ac'@lune/stdio'local af,ag={Reset=ae.color'reset'..ae.style'reset',Red=ae.color'red',Yellow=ae.
-color'yellow',Bold=ae.style'bold'},{}function ag.Info(ah:string,ai:string?)ai=ai or'\n'ae.write(`\u{2219} {ah}{ai}`)end
-function ag.Error(ah:string,ai:string?)ai=ai or'\n'ae.ewrite(`{af.Bold..af.Red}\u{2219} {ah}{af.Reset}{ai}`)end function
-ag.Warn(ah:string,ai:string?)ai=ai or'\n'ae.write(`{af.Bold..af.Yellow}\u{2219} {ah}{af.Reset}{ai}`)end function ag.
-InternalError(ah:string,ai:string?)ag.Error('[INTERNAL ERROR] '..ah,ai)end return ag end)()end,[6]=function()local aa,ab
-,ac=a(6)local ad return(function(...)return
+include_functions=true}}}return ae.encode('json',af,false)end)()end,[7]=function()local aa,ab,ac=a(7)local ad return(
+function(...)return'0.4.2'end)()end,[6]=function()local aa,ab,ac=a(6)local ad return(function(...)return
 [[-- ++++++++ WAX BUNDLED DATA BELOW ++++++++ --
 
 -- Will be used later for getting flattened globals
@@ -778,78 +788,88 @@ for _, ScriptRef in next, ScriptsToRun do
     Defer(LoadScript, ScriptRef)
 end
 ]]
-end)()end,[10]=function()local aa,ab,ac=a(10)local ad return(function(...)return{Log=ac'Log',StringUtils=ac'StringUtils'
-,CommandUtils=ac'CommandUtils',WebhookQueue=ac'WebhookQueue',Run=ac'Run',ParseArgs=ac'ParseArgs',EnsureFileTree=ac
-'EnsureFileTree',RecursiveReadDir=ac'RecursiveReadDir'}end)()end,[17]=function()local aa,ab,ac=a(17)local ad return(
-function(...)local ae={}function ae.FileType(af:string):string?local ag=string.match(af,'.%.([^%.]+)$')if ag then ag=
-string.lower(ag)end return ag end function ae.FileNameFromPath(af:string):string?return string.match(af,'[^/\\]+$')end
-function ae.FileNameWithoutExtension(af:string,ag:boolean?):string?ag=if ag==nil then true else ag if ag then return
-string.match(af,'^(.+)%.')else return string.match(af,'^%.?[^%.]+')end end function ae.FilePathWithoutExtension(af:
-string,ag:boolean?):string?local ah,ai=ae.DirectoryOfFilePath(af),ae.FileNameFromPath(af)if not ah or not ai then return
-end local aj=ae.FileNameWithoutExtension(ai,ag)if not aj then return end return ah..aj end function ae.
-DirectoryOfFilePath(af:string):string?local ag=string.match(af,'^.*[/\\]')if not ag or ag==''then ag='./'end return ag
-end function ae.SplitStringByPattern(af:string,ag:string)local ah={}for ai in string.gmatch(af,ag)do table.insert(ah,ai)
-end return ah end function ae.SplitFilePath(af:string)return ae.SplitStringByPattern(af,'([^/\\]+)[/\\]?')end function
-ae.LineCount(af:string):number local ag=1 for ah in string.gmatch(af,'\n')do ag+=1 end return ag end function ae.Replace
-(af:string,ag:{[string]:string}):string return string.gsub(af,'${([A-Za-z_][A-Za-z0-9_]*)}',ag)end do local af={['"']=
-'\\"',['\\']='\\\\',['\a']='\\a',['\b']='\\b',['\t']='\\t',['\n']='\\n',['\v']='\\v',['\f']='\\f',['\r']='\\r'}for ag=0,
-255 do local ah=string.char(ag)if not af[ah]and(ag<32 or ag>126)then af[ah]='\\'..ag end end function ae.
-SerializeStringData(ag:string):string local ah=string.gsub(ag,'[%z\\"\1-\31\127-\255]',af)return ah end end return ae
+end)()end,[13]=function()local aa,ab,ac=a(13)local ad return(function(...)local ae=ac'@lune/stdio'local af,ag={Reset=ae.
+color'reset'..ae.style'reset',Red=ae.color'red',Yellow=ae.color'yellow',Bold=ae.style'bold'},{}function ag.Info(ah:
+string,ai:string?)ai=ai or'\n'ae.write(`\226\136\153 {ah}{ai}`)end function ag.Error(ah:string,ai:string?)ai=ai or'\n'ae
+.ewrite(`{af.Bold..af.Red}\226\136\153 {ah}{af.Reset}{ai}`)end function ag.Warn(ah:string,ai:string?)ai=ai or'\n'ae.
+write(`{af.Bold..af.Yellow}\226\136\153 {ah}{af.Reset}{ai}`)end function ag.InternalError(ah:string,ai:string?)ag.Error(
+'[INTERNAL ERROR] '..ah,ai)end return ag end)()end,[12]=function()local aa,ab,ac=a(12)local ad return(function(...)local
+ae=ac'@lune/fs'local function af(ag:{[string]:any},ah:string?)for ai,aj in ag do local ak,al=if ah then`{ah}/{ai}`else
+ai,type(aj)if al=='table'then if not ae.isDir(ak)then ae.writeDir(ak)end af(aj,ak)elseif al=='string'and not ae.isFile(
+ak)then ae.writeFile(ak,aj)end end end return af end)()end,[17]=function()local aa,ab,ac=a(17)local ad return(function(
+...)local ae={}function ae.FileType(af:string):string?local ag=string.match(af,'.%.([^%.]+)$')if ag then ag=string.
+lower(ag)end return ag end function ae.FileNameFromPath(af:string):string?return string.match(af,'[^/\\]+$')end function
+ae.FileNameWithoutExtension(af:string,ag:boolean?):string?ag=if ag==nil then true else ag if ag then return string.
+match(af,'^(.+)%.')else return string.match(af,'^%.?[^%.]+')end end function ae.FilePathWithoutExtension(af:string,ag:
+boolean?):string?local ah,ai=ae.DirectoryOfFilePath(af),ae.FileNameFromPath(af)if not ah or not ai then return end local
+aj=ae.FileNameWithoutExtension(ai,ag)if not aj then return end return ah..aj end function ae.DirectoryOfFilePath(af:
+string):string?local ag=string.match(af,'^.*[/\\]')if not ag or ag==''then ag='./'end return ag end function ae.
+SplitStringByPattern(af:string,ag:string)local ah={}for ai in string.gmatch(af,ag)do table.insert(ah,ai)end return ah
+end function ae.SplitFilePath(af:string)return ae.SplitStringByPattern(af,'([^/\\]+)[/\\]?')end function ae.LineCount(af
+:string):number local ag=1 for ah in string.gmatch(af,'\n')do ag+=1 end return ag end function ae.Replace(af:string,ag:{
+[string]:string}):string return string.gsub(af,'${([A-Za-z_][A-Za-z0-9_]*)}',ag)end do local af={['"']='\\"',['\\']=
+'\\\\',['\a']='\\a',['\b']='\\b',['\t']='\\t',['\n']='\\n',['\v']='\\v',['\f']='\\f',['\r']='\\r'}for ag=0,255 do local
+ah=string.char(ag)if not af[ah]and(ag<32 or ag>126)then af[ah]='\\'..ag end end function ae.SerializeStringData(ag:
+string):string local ah=string.gsub(ag,'[%z\\"\1-\31\127-\255]',af)return ah end end return ae end)()end,[10]=function()
+local aa,ab,ac=a(10)local ad return(function(...)return{Log=ac'./LuneUtils/Log',StringUtils=ac'./LuneUtils/StringUtils',
+CommandUtils=ac'./LuneUtils/CommandUtils',WebhookQueue=ac'./LuneUtils/WebhookQueue',Run=ac'./LuneUtils/Run',ParseArgs=ac
+'./LuneUtils/ParseArgs',EnsureFileTree=ac'./LuneUtils/EnsureFileTree',RecursiveReadDir=ac'./LuneUtils/RecursiveReadDir'}
 end)()end,[14]=function()local aa,ab,ac=a(14)local ad return(function(...)type OptionsInput={[string]:{string|number|
-boolean|nil}}type OptionsOutput={[string]:string|number|boolean|nil}local ae,af=ac'@lune/process',ac'Log'local function
-ag(ah:{string},ai:OptionsInput,aj:string?):OptionsOutput local function ak()if aj then print(`\n{aj}`)end ae.exit(1)end
-local al={}for b,c in ah do local d,e=string.match(c,'([%w%-_]+)=(.+)')if not d then af.Error(`Command argument given, "{
-c}" not in the proper \`option=value\` format, aborting..`)ak()end local f=ai[d]if f==nil then af.Error(`"{d}" isn't a valid option"`
-)ak()end local g=f[1]if g=='boolean'then e=string.lower(e)e=if e=='true'then true elseif e=='false'then false else nil
-if e==nil then af.Error(`"{e}" isn't a valid boolean type; expected "true" or "false"`)ak()end elseif g=='number'then e=
-tonumber(e)if not e then af.Error(`Failed to convert given input "{e}" to a number value`)ak()end end al[d]=e end for d,
-e in ai do local f,g=e[2],e[3]or false if not al[d]then if g then af.Error(`Option "{d}" required but not provided`)ak()
-end al[d]=f end end return al end return ag end)()end,[16]=function()local aa,ab,ac=a(16)local ad return(function(...)
-local ae,af=ac'@lune/process',ac'Log'local function ag(ah:string,ai:{string}?,aj:boolean?,ak:((string?)->())?):process.
-SpawnResult local al,b=ai or{},if aj==nil then false else aj if not b then if#al==0 then af.Info(`> {ah}`)else af.Info(`> {
-ah} {table.concat(al,' ')}`)end end local c=ae.spawn(ah,ai,{shell=if ae.os~='windows'then true else nil,stdio=if b then
-'default'else'inherit'})if not c.ok and ak then ak(`Command above failed with status code {c.code}`)end return c end
-return ag end)()end},{{1,2,{'Wax'},{{2,1,{'lib'},{{8,1,{'libraries'},{{9,2,{'LuaEncode'}},{10,2,{'LuneUtils'},{{18,2,{
-'WebhookQueue'}},{16,2,{'Run'}},{12,2,{'EnsureFileTree'}},{17,2,{'StringUtils'}},{14,2,{'ParseArgs'}},{15,2,{
-'RecursiveReadDir'}},{11,2,{'CommandUtils'}},{13,2,{'Log'}}}}}},{4,1,{'data'},{{7,2,{'Version'}},{6,2,{'Template'}},{5,2
-,{'DefaultDarkluaConfig'}}}},{3,2,{'BundleModel'}}}}}}},'0.4.1','WaxRuntime',string,task,setmetatable,error,next,table,
-unpack,coroutine,script,type,require,pcall,tostring,tonumber,_VERSION local j,k,l,m,n,o,p=aj.insert,aj.remove,aj.freeze
-or function(j)return j end,al.wrap,ae.sub,ae.match,ae.gmatch if h and n(h,1,4)=='Lune'then local q,r=e(d,'@lune/task')if
-q and r then af=r end end local q=af and af.defer local r,s,t,u,v,w,x,y,A=q or function(r,...)m(r)(...)end,{[1]='Folder'
-,[2]='ModuleScript',[3]='Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local B,C={GetFullName={{},
-function(B)local C,D=B.Name,B.Parent while D do C=D.Name..'.'..C D=D.Parent end return C end},GetChildren={{},function(B
-)local C={}for D in ai,A[B]do j(C,D)end return C end},GetDescendants={{},function(B)local C={}for D in ai,A[B]do j(C,D)
-for E,F in ai,D:GetDescendants()do j(C,F)end end return C end},FindFirstChild={{'string','boolean?'},function(B,C,D)
-local E=A[B]for F in ai,E do if F.Name==C then return F end end if D then for G in ai,E do return G:FindFirstChild(C,
-true)end end end},FindFirstAncestor={{'string'},function(B,C)local D=B.Parent while D do if D.Name==C then return D end
-D=D.Parent end end},WaitForChild={{'string','number?'},function(B,C)return B:FindFirstChild(C)end}},{}for D,E in ai,B do
-local F,G,H=E[1],E[2],{}for I,J in ai,F do local K,L=o(J,'^([^%?]+)(%??)')H[I]={K,L}end C[D]=function(K,...)if not A[K]
-then ah("Expected ':' not '.' calling member function "..D,2)end local L={...}for M,N in ai,H do local O=L[M]local P,Q,R
-=c(O),N[1],N[2]if O==nil and not R then ah('Argument '..O..' missing or nil',3)end if Q~='any'and P~=Q and not(P=='nil'
-and R)then ah('Argument '..M..' expects type "'..Q..'", got "'..P..'"',2)end end return G(K,...)end end local function F
-(G,H,I)local J,K=(ag({},{__mode='k'}))local function L(M)ah(M..' is not a valid (virtual) member of '..G..' "'..H..'"',3
-)end local function M(N)ah('Unable to assign (virtual) property '..N..'. Property is read only',3)end local N,O={},{}O.
-__metatable=false O.__index=function(P,Q)if Q=='ClassName'then return G elseif Q=='Name'then return H elseif Q=='Parent'
-then return I elseif G=='StringValue'and Q=='Value'then return K else local R=C[Q]if R then return R end end for R in ai
-,J do if R.Name==Q then return R end end L(Q)end O.__newindex=function(P,Q,R)if Q=='ClassName'then M(Q)elseif Q=='Name'
-then H=R elseif Q=='Parent'then if R==N then return end if I~=nil then A[I][N]=nil end I=R if R~=nil then A[R][N]=true
-end elseif G=='StringValue'and Q=='Value'then K=R else L(Q)end end O.__tostring=function()return H end ag(N,O)A[N]=J if
-I~=nil then A[I][N]=true end return N end local function G(H,I)local J,K,L,M=H[1],H[2],H[3],H[4]local N=s[K]local O=L
-and k(L,1)or N local P=F(N,O,I)t[J]=P if L then for Q,R in ai,L do P[Q]=R end end if M then for Q,R in ai,M do G(R,P)end
-end return P end local H=F('Folder','['..ad..']')for I,J in ai,ab do G(J,H)end for K,L in ai,aa do local M=t[K]u[M]=L v[
-M]=K local N=M.ClassName if N=='LocalScript'or N=='Script'then j(x,M)end end local function M(N)local O,P=N.ClassName,w[
-N]if P and O=='ModuleScript'then return ak(P)end local Q=u[N]local function R(S)S=f(S)local T,U,V=N:GetFullName(),o(S,
-'[^:]+:(%d+): (.+)')if not U or not i then return T..':*: '..(V or S)end U=g(U)local W=v[N]local X=i[W]local Y=U-X+1 if
-Y<0 then Y='?'end return T..':'..Y..': '..V end if O=='LocalScript'or O=='Script'then local S,T=e(Q)if not S then ah(R(T
-),0)end else local S={e(Q)}local T=k(S,1)if not T then local U=k(S,1)ah(R(U),0)end w[N]=S return ak(S)end end function a
-(N)local O=t[N]local function P(Q,...)local R={e(Q,...)}local S=k(R,1)if not S then ah(R[1],3)end return ak(R)end local
-Q=l(ag({},{__index=y,__newindex=function(Q,R,S)y[R]=S end,__len=function()return#y end,__iter=function()return ai,y end}
-))local R,S=l{version=ac,envname=ad,shared=Q,script=b,require=d},O local function T(U,...)local V,W,X=c(U),
-'Attempted to call require with a non-ModuleScript','Attempted to call require with self'if V=='table'and A[U]then if U.
-ClassName~='ModuleScript'then ah(W,2)elseif U==O then ah(X,2)end return M(U)elseif V=='string'and n(U,1,1)~='@'then if#U
-==0 then ah('Attempted to call require with empty string',2)end local Y=O if n(U,1,1)=='/'then Y=H elseif n(U,1,2)=='./'
-then U=n(U,3)end local Z for _ in p(U,'([^/]*)/?')do local am=_ if _=='..'then am='Parent'end if am~=''then local an=Y:
-FindFirstChild(am)if not an then local ao=Y.Parent if ao then an=ao:FindFirstChild(am)end end if an then Y=an elseif _~=
-Z and _~='init'and _~='init.server'and _~='init.client'then ah('Virtual script path "'..U..'" not found',2)end end Z=_
-end if Y.ClassName~='ModuleScript'then ah(W,2)elseif Y==O then ah(X,2)end return M(Y)end return P(d,U,...)end return R,S
-,T end for am,an in ai,x do r(M,an)end return M(H:GetChildren()[1])
+boolean|nil}}type OptionsOutput={[string]:string|number|boolean|nil}local ae,af=ac'@lune/process',ac'./Log'
+local function ag(ah:{string},ai:OptionsInput,aj:string?):OptionsOutput local function ak()if aj then print(`\n{aj}`)end
+ae.exit(1)end local al={}for am,an in ah do local ao,ap=string.match(an,'([%w%-_]+)=(.+)')if not ao then af.Error(`Command argument given, "{
+an}" not in the proper \`option=value\` format, aborting..`)ak()end local aq=ai[ao]if aq==nil then af.Error(`"{ao}" isn't a valid option"`
+)ak()end local ar=aq[1]if ar=='boolean'then ap=string.lower(ap)ap=if ap=='true'then true elseif ap=='false'then false
+else nil if ap==nil then af.Error(`"{ap}" isn't a valid boolean type; expected "true" or "false"`)ak()end elseif ar==
+'number'then ap=tonumber(ap)if not ap then af.Error(`Failed to convert given input "{ap}" to a number value`)ak()end end
+al[ao]=ap end for am,an in ai do local ao,ap=an[2],an[3]or false if not al[am]then if ap then af.Error(`Option "{am}" required but not provided`
+)ak()end al[am]=ao end end return al end return ag end)()end,[16]=function()local aa,ab,ac=a(16)local ad return(function
+(...)local ae,af=ac'@lune/process',ac'./Log'local function ag(ah:string,ai:{string}?,aj:boolean?,ak:((string?)->())?):ae
+.ExecResult local al,am=ai or{},if aj==nil then false else aj if not am then if#al==0 then af.Info(`> {ah}`)else af.
+Info(`> {ah} {table.concat(al,' ')}`)end end local an=ae.exec(ah,ai,{shell=if ae.os~='windows'then true else nil,stdio=
+if am then'default'else'inherit'})if not an.ok and ak then ak(`Command above failed with status code {an.code}`)end
+return an end return ag end)()end},{{1,2,{'Wax'},{{2,1,{'lib'},{{3,2,{'BundleModel'}},{8,1,{'libraries'},{{9,2,{
+'LuaEncode'}},{10,2,{'LuneUtils'},{{14,2,{'ParseArgs'}},{18,2,{'WebhookQueue'}},{15,2,{'RecursiveReadDir'}},{11,2,{
+'CommandUtils'}},{16,2,{'Run'}},{17,2,{'StringUtils'}},{12,2,{'EnsureFileTree'}},{13,2,{'Log'}}}}}},{4,1,{'data'},{{7,2,
+{'Version'}},{6,2,{'Template'}},{5,2,{'DefaultDarkluaConfig'}}}}}}}}},'0.4.2','WaxRuntime',string,task,setmetatable,
+error,next,table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.
+insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and ay(as,1,4)=='Lune'
+then local aB,b=ap(ao,'@lune/task')if aB and b then af=b end end local aB=af and af.defer local b,c,d,e,f,g,h,i,j=aB or
+function(b,...)ax(b)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]='LocalScript',[5]='StringValue'},{},{},{}
+,{},{},{},{}local k,l={GetFullName={{},function(k)local l,m=k.Name,k.Parent while m do l=m.Name..'.'..l m=m.Parent end
+return l end},GetChildren={{},function(k)local l={}for m in ai,j[k]do au(l,m)end return l end},GetDescendants={{},
+function(k)local l={}for m in ai,j[k]do au(l,m)for n,o in ai,m:GetDescendants()do au(l,o)end end return l end},
+FindFirstChild={{'string','boolean?'},function(k,l,m)local n=j[k]for o in ai,n do if o.Name==l then return o end end if
+m then for o in ai,n do return o:FindFirstChild(l,true)end end end},FindFirstAncestor={{'string'},function(k,l)local m=k
+.Parent while m do if m.Name==l then return m end m=m.Parent end end},WaitForChild={{'string','number?'},function(k,l)
+return k:FindFirstChild(l)end}},{}for m,n in ai,k do local o,p,q=n[1],n[2],{}for r,s in ai,o do local t,u=az(s,
+'^([^%?]+)(%??)')q[r]={t,u}end l[m]=function(r,...)if not j[r]then ah("Expected ':' not '.' calling member function "..m
+,2)end local s={...}for t,u in ai,q do local v=s[t]local w,x,y=an(v),u[1],u[2]if v==nil and not y then ah('Argument '..v
+..' missing or nil',3)end if x~='any'and w~=x and not(w=='nil'and y)then ah('Argument '..t..' expects type "'..x..
+'", got "'..w..'"',2)end end return p(r,...)end end local function m(n,o,p)local q,r=(ag({},{__mode='k'}))local function
+s(t)ah(t..' is not a valid (virtual) member of '..n..' "'..o..'"',3)end local function t(u)ah(
+'Unable to assign (virtual) property '..u..'. Property is read only',3)end local u,v={},{}v.__metatable=false v.__index=
+function(w,x)if x=='ClassName'then return n elseif x=='Name'then return o elseif x=='Parent'then return p elseif n==
+'StringValue'and x=='Value'then return r else local y=l[x]if y then return y end end for y in ai,q do if y.Name==x then
+return y end end s(x)end v.__newindex=function(w,x,y)if x=='ClassName'then t(x)elseif x=='Name'then o=y elseif x==
+'Parent'then if y==u then return end if p~=nil then j[p][u]=nil end p=y if y~=nil then j[y][u]=true end elseif n==
+'StringValue'and x=='Value'then r=y else s(x)end end v.__tostring=function()return o end ag(u,v)j[u]=q if p~=nil then j[
+p][u]=true end return u end local function n(o,p)local q,r,s,t=o[1],o[2],o[3],o[4]local u=c[r]local v=s and av(s,1)or u
+local w=m(u,v,p)d[q]=w if s then for x,y in ai,s do w[x]=y end end if t then for x,y in ai,t do n(y,w)end end return w
+end local o=m('Folder','['..ad..']')for p,q in ai,ab do n(q,o)end for p,q in ai,aa do local r=d[p]e[r]=q f[r]=p local s=
+r.ClassName if s=='LocalScript'or s=='Script'then au(h,r)end end local function p(q)local r,s=q.ClassName,g[q]if s and r
+=='ModuleScript'then return ak(s)end local t=e[q]local function u(v)v=aq(v)local w,x,y=q:GetFullName(),az(v,
+'[^:]+:(%d+): (.+)')if not x or not at then return w..':*: '..(y or v)end x=ar(x)local z=f[q]local A=at[z]local B=x-A+1
+if B<0 then B='?'end return w..':'..B..': '..y end if r=='LocalScript'or r=='Script'then local v,w=ap(t)if not v then
+ah(u(w),0)end else local v={ap(t)}local w=av(v,1)if not w then local x=av(v,1)ah(u(x),0)end g[q]=v return ak(v)end end
+function a(q)local r=d[q]local function s(t,...)local u={ap(t,...)}local v=av(u,1)if not v then ah(u[1],3)end return ak(
+u)end local t=aw(ag({},{__index=i,__newindex=function(t,u,v)i[u]=v end,__len=function()return#i end,__iter=function()
+return ai,i end}))local u,v=aw{version=ac,envname=ad,shared=t,script=am,require=ao},r local function w(x,...)local y,z,A
+=an(x),'Attempted to call require with a non-ModuleScript','Attempted to call require with self'if y=='table'and j[x]
+then if x.ClassName~='ModuleScript'then ah(z,2)elseif x==r then ah(A,2)end return p(x)elseif y=='string'and ay(x,1,1)~=
+'@'then if#x==0 then ah('Attempted to call require with empty string',2)end local B=r if ay(x,1,1)=='/'then B=o elseif
+ay(x,1,2)=='./'then x=ay(x,3)end local C for D in aA(x,'([^/]*)/?')do local E=D if D=='..'then E='Parent'end if E~=''
+then local F=B:FindFirstChild(E)if not F then local G=B.Parent if G then F=G:FindFirstChild(E)end end if F then B=F
+elseif D~=C and D~='init'and D~='init.server'and D~='init.client'then ah('Virtual script path "'..x..'" not found',2)end
+end C=D end if B.ClassName~='ModuleScript'then ah(z,2)elseif B==r then ah(A,2)end return p(B)end return s(ao,x,...)end
+return u,v,w end for q,r in ai,h do b(p,r)end return p(o:GetChildren()[1])

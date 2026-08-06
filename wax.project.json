@@ -1,7 +1,6 @@
 {
-  "name": "Volcano",
+  "name": "volcano",
   "tree": {
     "$path": "src"
-
   }
 }
