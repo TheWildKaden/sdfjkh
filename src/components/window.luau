@@ -114,9 +114,9 @@ local function themeOverrides(value)
             return require(named)
         end
         -- a typo'd name shouldnt crash the menu; warn and fall back so the UI still builds
-        log.warn("Rayfield: unknown theme '" .. value .. "', using default")
+        log.warn("Volcano: unknown theme '" .. value .. "', using default")
     elseif value ~= nil then
-        log.warn("Rayfield: invalid theme (expected a built-in name or a theme table), using default")
+        log.warn("Volcano: invalid theme (expected a built-in name or a theme table), using default")
     end
     return require(themes["default"])
 end
@@ -170,15 +170,15 @@ function Window.new(properties)
     end
 
     local self = setmetatable({
-        name = properties.name or properties.Name or "Rayfield Window",
+        name = properties.name or properties.Name or "Volcano Window",
         subheading = properties.subtitle or properties.Subtitle,
         size = fitWindowSize(),
         instances = {},
         connections = {},
 
         icon = properties.icon or properties.Icon,
-        showName = properties.showName or properties.ShowName or "Rayfield",
-        showIcon = properties.showIcon or properties.ShowIcon or constants.icons.rayfield,
+        showName = properties.showName or properties.ShowName or "Volcano",
+        showIcon = properties.showIcon or properties.ShowIcon or constants.icons.volcano,
 
         themeProperties = {},
         localeProperties = {},
@@ -213,7 +213,7 @@ function Window.new(properties)
         __newindex = function(_, flag, value)
             local control = self.controls[flag]
             if not control then
-                log.warn("Rayfield: no flag '" .. tostring(flag) .. "' to set")
+                log.warn("Volcano: no flag '" .. tostring(flag) .. "' to set")
                 return
             end
             control:Set(value)
@@ -231,7 +231,7 @@ function Window.new(properties)
         end,
     })
 
-    -- Rayfield Gen2 Screen
+    -- Volcano Gen2 Screen
     self.screenGui = self:Create("ScreenGui", {
         Name = variables.httpService:GenerateGUID(false),
         IgnoreGuiInset = true,
@@ -540,11 +540,11 @@ function Window.new(properties)
     })
 
     self.rfSettings = self:CreateTab({
-        name = "Rayfield Settings",
+        name = "Volcano Settings",
         customOrder = 1000,
 
         neglectSelector = true,
-        -- everything here is ephemeral: these controls persist to rayfield.rfld via SaveSettings,
+        -- everything here is ephemeral: these controls persist to volcano.rfld via SaveSettings,
         -- never the user's config. children inherit this, so none of them opt out individually.
         forgetState = true,
     })
@@ -758,7 +758,7 @@ function Window:_registerControl(control)
         end
         flag = flag .. n
         log.warn(
-            "Rayfield: duplicate config flag '"
+            "Volcano: duplicate config flag '"
                 .. control.flag
                 .. "', saving this one as '"
                 .. flag
@@ -1661,7 +1661,7 @@ function Window:Show()
         self._autoLoaded = true
         local ok, err = pcall(self.Load, self)
         if not ok then
-            log.warn("Rayfield: Failed to load configuration - " .. tostring(err))
+            log.warn("Volcano: Failed to load configuration - " .. tostring(err))
         end
     end
 
@@ -2212,7 +2212,7 @@ function Window:_runGuarded(element, fn, ...)
         end
 
         log.warn(
-            `Rayfield encountered an error, with the callback for a {element.__type} component named '{element.name}':`
+            `Volcano encountered an error, with the callback for a {element.__type} component named '{element.name}':`
         )
         log.print(err)
 

@@ -5,9 +5,9 @@
 -- License, v. 2.0. If a copy of the MPL was not distributed with this
 -- file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
--- Rayfield's own console output. Silenced under secure mode so the library never announces
+-- Volcano's own console output. Silenced under secure mode so the library never announces
 -- itself through warn/print, both of which anti-cheats hook. The game's and the dev's own
--- output are left alone; this only gags Rayfield.
+-- output are left alone; this only gags Volcano.
 
 local runtime = require(script.Parent.runtime)
 

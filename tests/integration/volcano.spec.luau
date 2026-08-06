@@ -1,11 +1,11 @@
-local helpers = (_G :: any).__RAYFIELD_TEST_HELPERS
+local helpers = (_G :: any).__VOLCANO_TEST_HELPERS
 
 return function()
-    local Rayfield = helpers.requireRayfield()
+    local Volcano = helpers.requireVolcano()
     local image = helpers.requireUtility("image")
     local variables = helpers.requireUtility("variables")
 
-    describe("Rayfield init and themes", function()
+    describe("Volcano init and themes", function()
         local originalSecureMode
         local originalPreload
         local originalLoadFont
@@ -39,7 +39,7 @@ return function()
         it("creates a window through the public init module", function()
             variables.secureMode = false
 
-            window = Rayfield:CreateWindow({
+            window = Volcano:CreateWindow({
                 name = "Init Window",
                 subtitle = "Normal",
                 configuration = {
@@ -69,7 +69,7 @@ return function()
                 return Font.new("font://secure", weight, Enum.FontStyle.Normal)
             end
 
-            window = Rayfield:CreateWindow({
+            window = Volcano:CreateWindow({
                 name = "Secure Window",
                 fallbackFont = Enum.Font.SourceSans,
                 configuration = {

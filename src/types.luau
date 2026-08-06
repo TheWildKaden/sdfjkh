@@ -312,8 +312,8 @@ export type Window = {
     Unload: (self: Window) -> (),
 }
 
-export type Rayfield = {
-    CreateWindow: (self: Rayfield, props: WindowProps) -> Window,
+export type Volcano = {
+    CreateWindow: (self: Volcano, props: WindowProps) -> Window,
 }
 
 return {}

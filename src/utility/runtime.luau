@@ -31,7 +31,7 @@ runtime.secureMode = (function()
         return false
     end
     local ok, val = pcall(function()
-        return getgenv().RAYFIELD_SECURE
+        return getgenv().VOLCANO_SECURE
     end)
     return ok and val == true
 end)()

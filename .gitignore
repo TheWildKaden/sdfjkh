@@ -1,6 +1,6 @@
-# Project place file
-/Rayfield Gen2.rbxlx
-/Rayfield Gen2 Tests.rbxlx
+# Roblox Studio project files
+/Volcano Gen2.rbxlx
+/Volcano Gen2 Tests.rbxlx
 
 # Roblox Studio lock files
 /*.rbxlx.lock
@@ -14,13 +14,18 @@
 /coverage/
 /sourcemap.json
 
-# Generated tooling defs (created in CI / locally on demand)
+# Generated tooling definitions
 /roblox.yml
 /globalTypes.d.luau
+
+# npm
+/package.json
+/package-lock.json
+/node_modules/
 
 # Private preview access map
 /preview-tokens.md
 
 # Claude and Artificial Intelligence
-CLAUDE.md
-.claude/
+/CLAUDE.md
+/.claude/

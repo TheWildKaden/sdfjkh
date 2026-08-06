@@ -40,13 +40,13 @@ end
 --
 -- These live with the interface, not in the Workspace the docs examples use. Workspace is
 -- readable by the game's own scripts, so a pooled effect sitting there is the one piece of
--- Rayfield a game could find by walking the tree - everything else hides behind gethui with
+-- Volcano a game could find by walking the tree - everything else hides behind gethui with
 -- a random name. An effect only needs *a* parent to play, not a world one.
 local effects: { [Enum.HapticEffectType]: Instance } = {}
 local container: Instance? = nil
 
 -- Where new effects get parented. The window hands us its ScreenGui; until then (or after it
--- goes away) fall back to the container every Rayfield gui lives in.
+-- goes away) fall back to the container every Volcano gui lives in.
 function hapticEngine.setContainer(target: Instance?)
     container = target
 end

@@ -9,7 +9,7 @@ local filesystem = require(script.Parent.filesystem)
 local path = require(script.Parent.path)
 
 -- defaults
-local DEFAULT_ROOT_PATH = "Rayfield"
+local DEFAULT_ROOT_PATH = "Volcano"
 
 local fileSystemManager = {}
 fileSystemManager.__index = fileSystemManager

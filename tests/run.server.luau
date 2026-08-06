@@ -8,27 +8,27 @@ end
 local TestEZ = require(TestEZModule)
 local testsRoot = ReplicatedStorage:WaitForChild("Tests")
 
-_G.__RAYFIELD_TEST_HELPERS = {
+_G.__VOLCANO_TEST_HELPERS = {
     requireUtility = function(name)
-        return require(ReplicatedStorage.Rayfield.utility[name])
+        return require(ReplicatedStorage.Volcano.utility[name])
     end,
     requireComponent = function(name)
-        return require(ReplicatedStorage.Rayfield.components[name])
+        return require(ReplicatedStorage.Volcano.components[name])
     end,
     requireTheme = function(name)
-        return require(ReplicatedStorage.Rayfield.themes[name])
+        return require(ReplicatedStorage.Volcano.themes[name])
     end,
-    requireRayfield = function()
-        return require(ReplicatedStorage.Rayfield)
+    requireVolcano = function()
+        return require(ReplicatedStorage.Volcano)
     end,
 }
-_G.__RAYFIELD_TEST_VERBOSE_LOGS = _G.__RAYFIELD_TEST_VERBOSE_LOGS == true
+_G.__VOLCANO_TEST_VERBOSE_LOGS = _G.__VOLCANO_TEST_VERBOSE_LOGS == true
 
--- gag Rayfield's console output during test runs unless verbose logs are on. this is the
+-- gag Volcano's console output during test runs unless verbose logs are on. this is the
 -- runner's job, not the library's: src must not know about test environments.
-local log = require(ReplicatedStorage.Rayfield.utility.log)
+local log = require(ReplicatedStorage.Volcano.utility.log)
 log.setSuppressPredicate(function()
-    return _G.__RAYFIELD_TEST_VERBOSE_LOGS ~= true
+    return _G.__VOLCANO_TEST_VERBOSE_LOGS ~= true
 end)
 
 local results = TestEZ.TestBootstrap:run({ testsRoot }, TestEZ.Reporters.TextReporter, {

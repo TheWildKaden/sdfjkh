@@ -1,7 +1,7 @@
-# Rokit for Rayfield Gen2
+# Rokit for Volcano Gen2
 
 [tools]
-lune = "lune-org/lune@0.8.9"
+lune = "lune-org/lune@0.10.5"
 darklua = "seaofvoices/darklua@0.18.0"
 rojo = "rojo-rbx/rojo@7.7.0"
 StyLua = "JohnnyMorganz/StyLua@2.5.2"

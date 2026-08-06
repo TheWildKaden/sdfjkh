@@ -154,9 +154,9 @@ local function readCoverageBaseline()
     }
 end
 
-local coverageThreshold = parseNumberArg("coverage-threshold", tonumber(process.env.RAYFIELD_COVERAGE_THRESHOLD) or 70)
+local coverageThreshold = parseNumberArg("coverage-threshold", tonumber(process.env.VOLCANO_COVERAGE_THRESHOLD) or 70)
 local updateCoverageBaseline = parseFlagArg("update-coverage-baseline")
-local verboseTestLogsEnv = string.lower(process.env.RAYFIELD_TEST_VERBOSE_LOGS or "")
+local verboseTestLogsEnv = string.lower(process.env.VOLCANO_TEST_VERBOSE_LOGS or "")
 local verboseTestLogs = parseFlagArg("verbose-logs") or verboseTestLogsEnv == "true" or verboseTestLogsEnv == "1"
 local coverageDirectory, coverageScope = resolveCoverageDirectory(parseDirectoryArg(defaultCoverageDirectory))
 local coverageBaseline = nil
@@ -192,7 +192,7 @@ function coverage.hit(relativePath, lineNumber)
     end
 end
 
-_G.__RAYFIELD_COVERAGE = coverage
+_G.__VOLCANO_COVERAGE = coverage
 
 local function splitLines(source)
     local lines = {}
@@ -401,7 +401,7 @@ local function instrumentSource(relativePath, source)
     local depth = 0
     local lexerState = {}
     local previousContinuation = false
-    local output = { "local script = _G.__RAYFIELD_CURRENT_SCRIPT" }
+    local output = { "local script = _G.__VOLCANO_CURRENT_SCRIPT" }
 
     for lineNumber, line in splitLines(source) do
         local startsInLongBracket = lexerState.longBracket ~= nil
@@ -410,7 +410,7 @@ local function instrumentSource(relativePath, source)
 
         if coverable then
             fileCoverage.coverable[lineNumber] = true
-            table.insert(output, string.format("_G.__RAYFIELD_COVERAGE.hit(%q, %d)", relativePath, lineNumber))
+            table.insert(output, string.format("_G.__VOLCANO_COVERAGE.hit(%q, %d)", relativePath, lineNumber))
         end
 
         table.insert(output, line)
@@ -526,7 +526,7 @@ local function makeSourceNode(name, parent, path)
     return node
 end
 
-local sourceRootNode = makeSourceNode("Rayfield", nil, sourceModulePaths["src/init.luau"])
+local sourceRootNode = makeSourceNode("Volcano", nil, sourceModulePaths["src/init.luau"])
 local sourceNodesByPath = {}
 sourceNodesByPath[sourceRootNode.__path] = sourceRootNode
 
@@ -594,16 +594,16 @@ function require(module)
     end
 
     local previousScript = script
-    local previousCurrentScript = _G.__RAYFIELD_CURRENT_SCRIPT
+    local previousCurrentScript = _G.__VOLCANO_CURRENT_SCRIPT
     script = moduleScript
-    _G.__RAYFIELD_CURRENT_SCRIPT = moduleScript
+    _G.__VOLCANO_CURRENT_SCRIPT = moduleScript
     local ok, result = xpcall(function()
         return nativeRequire(path)
     end, function(err)
         return tostring(err) .. "\n" .. debug.traceback(nil, 2)
     end)
     script = previousScript
-    _G.__RAYFIELD_CURRENT_SCRIPT = previousCurrentScript
+    _G.__VOLCANO_CURRENT_SCRIPT = previousCurrentScript
 
     if not ok then
         error(result, 2)
@@ -1027,7 +1027,7 @@ game = {
 }
 workspace = services.Workspace
 
-_G.__RAYFIELD_TEST_REQUIRE_UTILITY = function(name)
+_G.__VOLCANO_TEST_REQUIRE_UTILITY = function(name)
     local moduleScript = sourceRootNode.utility[name]
     assert(moduleScript, string.format("Unknown utility module: %s", tostring(name)))
     return require(moduleScript)
@@ -1045,7 +1045,7 @@ local function requireTheme(name)
     return require(moduleScript)
 end
 
-local function requireRayfield()
+local function requireVolcano()
     return require(sourceRootNode)
 end
 
@@ -1064,22 +1064,22 @@ local function instrumentSourceForTest(relativePath, source)
     return instrumented, fileCoverage
 end
 
-_G.__RAYFIELD_TEST_HELPERS = {
-    requireUtility = _G.__RAYFIELD_TEST_REQUIRE_UTILITY,
+_G.__VOLCANO_TEST_HELPERS = {
+    requireUtility = _G.__VOLCANO_TEST_REQUIRE_UTILITY,
     requireComponent = requireComponent,
     requireTheme = requireTheme,
-    requireRayfield = requireRayfield,
+    requireVolcano = requireVolcano,
     services = services,
     makeSignal = makeSignal,
     instrumentSource = instrumentSourceForTest,
 }
-_G.__RAYFIELD_TEST_VERBOSE_LOGS = verboseTestLogs
+_G.__VOLCANO_TEST_VERBOSE_LOGS = verboseTestLogs
 
--- gag Rayfield's console output during test runs unless --verbose-logs is set. this is the
+-- gag Volcano's console output during test runs unless --verbose-logs is set. this is the
 -- runner's job, not the library's: src must not know about test environments.
-local logModule = _G.__RAYFIELD_TEST_REQUIRE_UTILITY("log")
+local logModule = _G.__VOLCANO_TEST_REQUIRE_UTILITY("log")
 logModule.setSuppressPredicate(function()
-    return _G.__RAYFIELD_TEST_VERBOSE_LOGS ~= true
+    return _G.__VOLCANO_TEST_VERBOSE_LOGS ~= true
 end)
 
 local results = {

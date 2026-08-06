@@ -18,7 +18,7 @@ local functions = require(utility.functions)
 local constants = require(utility.constants)
 local hapticEngine = require(utility.HapticEngine)
 
--- Timings/easings copied from Rayfield Gen1 (all Exponential, Out).
+-- Timings/easings copied from Volcano Gen1 (all Exponential, Out).
 local growInfo = TweenInfo.new(0.45, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
 local fadeLong = TweenInfo.new(0.38, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- bg + stroke
 local fadeShort = TweenInfo.new(0.28, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out) -- title/icon/desc/shadow

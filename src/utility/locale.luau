@@ -5,7 +5,7 @@
 -- License, v. 2.0. If a copy of the MPL was not distributed with this
 -- file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
--- Rayfield's localization core. Two kinds of copy pass through here: the library's own chrome
+-- Volcano's localization core. Two kinds of copy pass through here: the library's own chrome
 -- (search placeholder, "Signed in as", the settings page, and so on) and whatever names a dev
 -- gives its elements. Both resolve the same way - the dev translator first, then the built-in
 -- table for the active locale, then the source string itself - so anything untranslated still
@@ -113,7 +113,7 @@ function locale.register(tables: TranslationTables?)
                 if type(source) == "string" and type(translated) == "string" then
                     target[source] = translated
                 else
-                    log.warn(`Rayfield: skipping a '{id}' translation, entries must be string to string.`)
+                    log.warn(`Volcano: skipping a '{id}' translation, entries must be string to string.`)
                 end
             end
         end

@@ -1,5 +1,5 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rayfield = require(ReplicatedStorage.Rayfield)
+local Volcano = require(ReplicatedStorage.Volcano)
 
 -- Let the viewport settle before opening, so the window fits to the full screen size.
 task.wait(2)
@@ -25,9 +25,9 @@ local translations = {
     },
 }
 
-local window = Rayfield:CreateWindow({
+local window = Volcano:CreateWindow({
     name = "Example",
-    subtitle = "Rayfield Gen2",
+    subtitle = "Volcano Gen2",
     theme = "cobalt",
     translations = translations,
     configuration = {

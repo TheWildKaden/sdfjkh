@@ -115,7 +115,7 @@ function Statistic.new(tab, properties)
 
     if self.description then
         if self.compact then
-            log.warn(`Rayfield: a compact stat has no room for a description, ignoring it on '{self.name}'.`)
+            log.warn(`Volcano: a compact stat has no room for a description, ignoring it on '{self.name}'.`)
         else
             self.descriptor = require(script.Parent.descriptor).new(self.tab, { description = self.description })
         end

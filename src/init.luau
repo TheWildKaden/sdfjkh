@@ -11,7 +11,7 @@ local locale = require(script.utility.locale)
 local constants = require(script.utility.constants)
 local types = require(script.types)
 
--- re-export public types so consumers can annotate against Rayfield.Window etc
+-- re-export public types so consumers can annotate against Volcano.Window etc
 export type Theme = types.Theme
 export type Translator = types.Translator
 export type Translations = types.Translations
@@ -51,12 +51,12 @@ export type Stat = types.Stat
 export type Section = types.Section
 export type Tag = types.Tag
 export type Popup = types.Popup
-export type Rayfield = types.Rayfield
+export type Volcano = types.Volcano
 
 -- the components are untyped luau, so this is where the window module meets the public contract
 type WindowModule = { new: (types.WindowProps) -> types.Window }
 
-local rayfield = {} :: Rayfield
+local volcano = {} :: Volcano
 
 local function createBanner()
     local ui = Instance.new("ScreenGui")
@@ -86,7 +86,7 @@ local function createBanner()
     return ui
 end
 
-function rayfield:CreateWindow(properties: types.WindowProps): types.Window
+function volcano:CreateWindow(properties: types.WindowProps): types.Window
     local banner = createBanner()
 
     local window: types.Window? -- forward declared so the settle callback below can reach it
@@ -173,4 +173,4 @@ function rayfield:CreateWindow(properties: types.WindowProps): types.Window
     return built
 end
 
-return rayfield
+return volcano

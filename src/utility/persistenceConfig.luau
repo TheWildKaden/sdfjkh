@@ -54,7 +54,7 @@ function persistenceConfig.save(window: ConfigWindow, name: unknown?): boolean
         if ok then
             flags[flag] = value
         else
-            log.warn("Rayfield: Failed to serialize flag '" .. tostring(flag) .. "' - " .. tostring(value))
+            log.warn("Volcano: Failed to serialize flag '" .. tostring(flag) .. "' - " .. tostring(value))
         end
     end
 
@@ -72,7 +72,7 @@ function persistenceConfig.save(window: ConfigWindow, name: unknown?): boolean
 
     local encodeSuccess, encoded = pcall(variables.httpService.JSONEncode, variables.httpService, flags)
     if not encodeSuccess then
-        log.warn("Rayfield: Failed to encode configuration - " .. tostring(encoded))
+        log.warn("Volcano: Failed to encode configuration - " .. tostring(encoded))
         return false
     end
 
@@ -81,7 +81,7 @@ function persistenceConfig.save(window: ConfigWindow, name: unknown?): boolean
     end)
 
     if not ok then
-        log.warn("Rayfield: Failed to save configuration - " .. tostring(err))
+        log.warn("Volcano: Failed to save configuration - " .. tostring(err))
         return false
     end
 
@@ -97,7 +97,7 @@ local function decodeFile(fullPath: string): ({ [string]: unknown }?, string?)
 
     local readOk, contents = pcall(filesystem.readfile, fullPath)
     if not readOk or type(contents) ~= "string" then
-        log.warn("Rayfield: Failed to read configuration file")
+        log.warn("Volcano: Failed to read configuration file")
         return nil, nil
     end
 
@@ -148,7 +148,7 @@ function persistenceConfig.load(window: ConfigWindow, name: unknown?): boolean
 
     if not parsedFlags then
         if raw then
-            log.warn("Rayfield: Configuration file has an invalid format, backing up and resetting")
+            log.warn("Volcano: Configuration file has an invalid format, backing up and resetting")
             local backupPath = backupPathFor(fullPath)
             pcall(function()
                 filesystem.ensureDir(dir)
@@ -172,7 +172,7 @@ function persistenceConfig.load(window: ConfigWindow, name: unknown?): boolean
     -- the outer load's guard standing
     window._loading = wasLoading
     if not applyOk then
-        log.warn("Rayfield: Failed to apply configuration - " .. tostring(applyErr))
+        log.warn("Volcano: Failed to apply configuration - " .. tostring(applyErr))
     end
 
     -- kept so elements built after this load can still restore themselves (see
@@ -198,7 +198,7 @@ function persistenceConfig.applyTo(control: PersistedControl, value: unknown)
         end
     end)
     if not ok then
-        log.warn("Rayfield: Failed to restore flag '" .. tostring(control.flag) .. "' - " .. tostring(err))
+        log.warn("Volcano: Failed to restore flag '" .. tostring(control.flag) .. "' - " .. tostring(err))
     end
 end
 

@@ -15,7 +15,7 @@ constants.fontAsset = "rbxassetid://12187365364"
 -- the input/keybind fields hug their text, tweening width instead of AutomaticSize so it animates
 constants.pillResizeInfo = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 
--- Every built-in icon Rayfield ships, by name. Single source of truth: secure mode caches
+-- Every built-in icon Volcano ships, by name. Single source of truth: secure mode caches
 -- exactly these (see utility/image) so the UI never has to fall back to a raw asset id at
 -- runtime. Add a new built-in icon here and it's cached automatically.
 constants.icons = {
@@ -30,7 +30,7 @@ constants.icons = {
     colorpicker = 91452555903853, -- same hollow-box glyph as dot
     banner = 111263549366178,
     config = 125823673784681, -- saved-configurations picker
-    rayfield = 80387863064905, -- default show icon on the sign-in toast
+    volcano = 80387863064905, -- default show icon on the sign-in toast
 }
 
 -- Accent used by the toggle switch + slider glow when active.

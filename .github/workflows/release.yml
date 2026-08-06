@@ -101,7 +101,7 @@ jobs:
         run: |
           set -euo pipefail
           {
-            printf -- '-- Rayfield Gen2 v%s\n' "$VERSION"
+            printf -- '-- Volcano Gen2 v%s\n' "$VERSION"
             printf -- '-- loadstring(game:HttpGet("https://sirius.menu/gen2"))()\n'
             cat build/bundled.luau
           } > build/bundled.luau.stamped
@@ -152,12 +152,12 @@ jobs:
 
           if ! gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
             {
-              printf 'The `%s` release of Rayfield Gen2.\n\n' "$RELEASE_TAG"
-              printf '    local Rayfield = loadstring(game:HttpGet("https://sirius.menu/gen2"))()\n\n'
-              printf 'Docs: https://docs.sirius.menu/rayfield-gen2\n'
+              printf 'The `%s` release of Volcano Gen2.\n\n' "$RELEASE_TAG"
+              printf '    local Volcano = loadstring(game:HttpGet("https://sirius.menu/gen2"))()\n\n'
+              printf 'Docs: https://docs.sirius.menu/volcano-gen2\n'
             } > release-notes.md
             gh release create "$RELEASE_TAG" --target main --latest \
-              --title "Rayfield Gen2 $RELEASE_TAG" \
+              --title "Volcano Gen2 $RELEASE_TAG" \
               --notes-file release-notes.md
           fi
 

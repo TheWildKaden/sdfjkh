@@ -1,10 +1,10 @@
 {
-  "name": "Rayfield Gen2",
+  "name": "Volcano Gen2",
   "tree": {
     "$className": "DataModel",
 
     "ReplicatedStorage": {
-      "Rayfield": {
+      "Volcano": {
         "$path": "src"
       }
     },

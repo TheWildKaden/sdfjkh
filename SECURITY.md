@@ -1,6 +1,6 @@
 # Security Policy
 
-The Rayfield Gen 2 maintainers take security reports seriously. Thank you for reporting suspected vulnerabilities responsibly.
+The Volcano Gen 2 maintainers take security reports seriously. Thank you for reporting suspected vulnerabilities responsibly.
 
 ## Supported versions and branches
 
@@ -16,7 +16,7 @@ Security fixes may be developed privately before being applied to `dev` and `mai
 
 **Do not report security vulnerabilities through public GitHub issues, discussions, pull requests, comments, or other public channels.**
 
-Submit suspected vulnerabilities through [GitHub's private vulnerability reporting form](https://github.com/SiriusSoftwareLtd/rayfield-gen2/security/advisories/new). Reports submitted there are visible only to authorized repository security managers and administrators.
+Submit suspected vulnerabilities through [GitHub's private vulnerability reporting form](https://github.com/SiriusSoftwareLtd/volcano-gen2/security/advisories/new). Reports submitted there are visible only to authorized repository security managers and administrators.
 
 If the private reporting form is unavailable, do not disclose vulnerability details publicly. Wait until the private reporting channel becomes available.
 
@@ -40,8 +40,8 @@ For reports involving anti-cheat, platform-integrity, anti-malware, or other sec
 - The name and version of the detecting system.
 - The exact warning, detection name, message, or error code.
 - The date and approximate time of the detection.
-- Whether the detected code was an unmodified official Rayfield Gen 2 release.
-- The Rayfield Gen 2 commit, release, or file that triggered the detection.
+- Whether the detected code was an unmodified official Volcano Gen 2 release.
+- The Volcano Gen 2 commit, release, or file that triggered the detection.
 - A minimal reproduction that does not attempt to bypass the detecting system.
 - Relevant logs or screenshots with credentials and personal information removed.
 - Whether the detection can be reproduced without an executor, injector, modified fork, obfuscator, or unrelated third-party software.
@@ -80,18 +80,18 @@ If coordination becomes difficult, both parties should continue communicating pr
 
 Examples of potentially qualifying reports include:
 
-- Unauthorized code execution or injection caused by Rayfield Gen 2.
+- Unauthorized code execution or injection caused by Volcano Gen 2.
 - Unauthorized access to or modification of files, configuration, persisted data, or other protected resources.
 - Exposure of credentials, tokens, personal data, or other sensitive information.
-- Bypasses of intended trust or security boundaries within Rayfield Gen 2.
+- Bypasses of intended trust or security boundaries within Volcano Gen 2.
 - A vulnerability in build, update, release, or dependency handling that could distribute malicious code.
 - A denial-of-service condition with a practical and significant impact on supported use.
-- A vulnerable dependency with a demonstrated, exploitable impact on Rayfield Gen 2.
+- A vulnerable dependency with a demonstrated, exploitable impact on Volcano Gen 2.
 - Unexpected behavior in an unmodified official release that causes a reproducible anti-cheat, platform-integrity, anti-malware, or security-tool detection.
-- Evidence that official Rayfield Gen 2 code has been compromised, tampered with, or distributed from an unauthorized source.
+- Evidence that official Volcano Gen 2 code has been compromised, tampered with, or distributed from an unauthorized source.
 - A detection indicating that an official release performs undocumented or unsafe operations.
 
-A detection does not automatically establish that Rayfield Gen 2 contains a security vulnerability. The maintainers will investigate reproducible reports involving unmodified official code.
+A detection does not automatically establish that Volcano Gen 2 contains a security vulnerability. The maintainers will investigate reproducible reports involving unmodified official code.
 
 This list is not exhaustive. If you are uncertain whether an issue qualifies, report it privately.
 
@@ -100,14 +100,14 @@ This list is not exhaustive. If you are uncertain whether an issue qualifies, re
 The following are generally outside the scope of this policy:
 
 - Requests to bypass, disable, evade, or weaken anti-cheat, anti-tamper, moderation, anti-malware, platform-integrity, or other security controls.
-- Requests to make Rayfield Gen 2, an executor, or another tool undetectable.
+- Requests to make Volcano Gen 2, an executor, or another tool undetectable.
 - Detection caused solely by an executor, injector, exploit, modified fork, obfuscator, loader, script hub, or unrelated third-party software.
-- Account enforcement, moderation, suspensions, or bans without evidence that an unmodified official Rayfield Gen 2 release caused an unintended security issue.
+- Account enforcement, moderation, suspensions, or bans without evidence that an unmodified official Volcano Gen 2 release caused an unintended security issue.
 - Reports that only state that software was detected, without the detection details and evidence needed to reproduce it.
 - Ordinary bugs without a confidentiality, integrity, availability, or meaningful user-safety impact.
 - Feature requests, usability concerns, compatibility problems, or documentation errors.
 - Vulnerabilities that affect only unsupported versions or modified forks.
-- Issues in Roblox, an executor, or another third-party service that are not caused by Rayfield Gen 2.
+- Issues in Roblox, an executor, or another third-party service that are not caused by Volcano Gen 2.
 - Reports based solely on automated scanner output without evidence of an exploitable or reproducible impact.
 - Theoretical concerns without a plausible attack scenario.
 - Missing security hardening or best practices without a demonstrated vulnerability.
@@ -123,7 +123,7 @@ When researching a potential vulnerability or detection:
 
 - Test only with accounts, systems, and data you own or have explicit permission to use.
 - Limit testing to the minimum necessary to confirm the issue.
-- Use an unmodified official Rayfield Gen 2 release whenever possible.
+- Use an unmodified official Volcano Gen 2 release whenever possible.
 - Do not attempt to bypass, disable, evade, or interfere with anti-cheat, anti-tamper, moderation, anti-malware, or platform-integrity systems.
 - Do not develop or distribute detection-evasion techniques as part of a report.
 - Stop testing if you encounter personal data, credentials, secrets, or other information that is not yours.

@@ -1,4 +1,4 @@
-local helpers = (_G :: any).__RAYFIELD_TEST_HELPERS
+local helpers = (_G :: any).__VOLCANO_TEST_HELPERS
 
 return function()
     local odometer = helpers.requireUtility("odometer")
